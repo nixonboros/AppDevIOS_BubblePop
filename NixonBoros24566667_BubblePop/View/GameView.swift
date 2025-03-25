@@ -16,5 +16,5 @@ struct GameView: View {
 }
 
 #Preview {
-    GameView(playerName: "Player")
+    GameView(playerName: "EmptyPlayerName")
 }

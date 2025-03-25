@@ -11,28 +11,42 @@ struct ContentView: View {
     @StateObject var gameController = GameController()
     
     var body: some View {
-        VStack {
-            if gameController.isGameStarted {
-                GameView(playerName: gameController.playerName)
-            } else {
-                // Main Menu Screen
-                TextField("Enter Name", text: $gameController.playerName)
-                    .padding()
-                    .background(Color.gray.opacity(0.2))
-                    .cornerRadius(5)
-                    .padding(.horizontal)
-                
-                Button(action: {
-                    gameController.startGame()
-                }) {
-                    Text("Start Game")
-                        .font(.title)
+        ZStack {
+            Rectangle()
+                .fill(.white)
+                .ignoresSafeArea()
+            
+            VStack {
+                if gameController.isGameStarted {
+                    GameView(playerName: gameController.playerName)
+                } else {
+                    // Main Menu Screen
+                    Text("Bubble Pop")
                         .padding()
-                        .foregroundColor(.white)
-                        .background(Color.blue)
-                        .cornerRadius(10)
+                        .font(.largeTitle)
+                    
+                    TextField("Enter Name", text: $gameController.playerName)
+                        .padding()
+                        .background(Color.gray.opacity(0.2))
+                        .cornerRadius(30)
+                        .padding(.horizontal)
+                        .font(.headline)
+                        .shadow(radius: 5)
+                    
+                    Button(action: {
+                        gameController.startGame()
+                    }) {
+                        Text("Start Game")
+                            .font(.headline)
+                            .padding()
+                            .foregroundColor(.white)
+                            .background(gameController.playerName.isEmpty ? Color.gray.opacity(0.5) : Color.blue)
+                            .cornerRadius(30)
+                            .shadow(radius: 10)
+                    }
+                    .padding()
+                    .disabled(gameController.playerName.isEmpty) // Disable button when playerName is empty
                 }
-                .padding()
             }
         }
     }

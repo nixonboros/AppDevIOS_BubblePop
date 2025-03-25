@@ -14,7 +14,7 @@ class GameController: ObservableObject {
     func startGame() {
         // Validate name entry
         if playerName.isEmpty {
-            playerName = "Player" // Use a default name if empty
+            playerName = "EmptyPlayerName" // Use a default name if empty
         }
         
         isGameStarted = true
