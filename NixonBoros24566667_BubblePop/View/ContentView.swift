@@ -8,23 +8,22 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var playerName: String = ""
-    @State private var isGameStarted = false
+    @StateObject var gameController = GameController()
     
     var body: some View {
         VStack {
-            if isGameStarted {
-                GameView(playerName: playerName)
+            if gameController.isGameStarted {
+                GameView(playerName: gameController.playerName)
             } else {
                 // Main Menu Screen
-                TextField("Enter Name", text: $playerName)
+                TextField("Enter Name", text: $gameController.playerName)
                     .padding()
                     .background(Color.gray.opacity(0.2))
                     .cornerRadius(5)
                     .padding(.horizontal)
                 
                 Button(action: {
-                    startGame()
+                    gameController.startGame()
                 }) {
                     Text("Start Game")
                         .font(.title)
@@ -36,15 +35,6 @@ struct ContentView: View {
                 .padding()
             }
         }
-    }
-    
-    func startGame() {
-        // Validate name entry
-        if playerName.isEmpty {
-            playerName = "Player" // Use a default name if empty
-        }
-        
-        isGameStarted = true
     }
 }
 
