@@ -7,62 +7,62 @@
 	objects = {
 
 /* Begin PBXContainerItemProxy section */
-		9B67AA512D9253EE00B835DD /* PBXContainerItemProxy */ = {
+		9B67AA962D9255D200B835DD /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 9B67AA382D9253EC00B835DD /* Project object */;
+			containerPortal = 9B67AA7D2D9255CE00B835DD /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 9B67AA3F2D9253EC00B835DD;
-			remoteInfo = 24566667_BubblePop;
+			remoteGlobalIDString = 9B67AA842D9255CE00B835DD;
+			remoteInfo = NixonBoros24566667_BubblePop;
 		};
-		9B67AA5B2D9253EE00B835DD /* PBXContainerItemProxy */ = {
+		9B67AAA02D9255D200B835DD /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 9B67AA382D9253EC00B835DD /* Project object */;
+			containerPortal = 9B67AA7D2D9255CE00B835DD /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 9B67AA3F2D9253EC00B835DD;
-			remoteInfo = 24566667_BubblePop;
+			remoteGlobalIDString = 9B67AA842D9255CE00B835DD;
+			remoteInfo = NixonBoros24566667_BubblePop;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		9B67AA402D9253EC00B835DD /* 24566667_BubblePop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 24566667_BubblePop.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		9B67AA502D9253EE00B835DD /* 24566667_BubblePopTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = 24566667_BubblePopTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		9B67AA5A2D9253EE00B835DD /* 24566667_BubblePopUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = 24566667_BubblePopUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9B67AA852D9255CE00B835DD /* NixonBoros24566667_BubblePop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NixonBoros24566667_BubblePop.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9B67AA952D9255D200B835DD /* NixonBoros24566667_BubblePopTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NixonBoros24566667_BubblePopTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9B67AA9F2D9255D200B835DD /* NixonBoros24566667_BubblePopUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NixonBoros24566667_BubblePopUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		9B67AA422D9253EC00B835DD /* 24566667_BubblePop */ = {
+		9B67AA872D9255CE00B835DD /* NixonBoros24566667_BubblePop */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = 24566667_BubblePop;
+			path = NixonBoros24566667_BubblePop;
 			sourceTree = "<group>";
 		};
-		9B67AA532D9253EE00B835DD /* 24566667_BubblePopTests */ = {
+		9B67AA982D9255D200B835DD /* NixonBoros24566667_BubblePopTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = 24566667_BubblePopTests;
+			path = NixonBoros24566667_BubblePopTests;
 			sourceTree = "<group>";
 		};
-		9B67AA5D2D9253EE00B835DD /* 24566667_BubblePopUITests */ = {
+		9B67AAA22D9255D200B835DD /* NixonBoros24566667_BubblePopUITests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = 24566667_BubblePopUITests;
+			path = NixonBoros24566667_BubblePopUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		9B67AA3D2D9253EC00B835DD /* Frameworks */ = {
+		9B67AA822D9255CE00B835DD /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9B67AA4D2D9253EE00B835DD /* Frameworks */ = {
+		9B67AA922D9255D200B835DD /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9B67AA572D9253EE00B835DD /* Frameworks */ = {
+		9B67AA9C2D9255D200B835DD /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -72,22 +72,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		9B67AA372D9253EC00B835DD = {
+		9B67AA7C2D9255CE00B835DD = {
 			isa = PBXGroup;
 			children = (
-				9B67AA422D9253EC00B835DD /* 24566667_BubblePop */,
-				9B67AA532D9253EE00B835DD /* 24566667_BubblePopTests */,
-				9B67AA5D2D9253EE00B835DD /* 24566667_BubblePopUITests */,
-				9B67AA412D9253EC00B835DD /* Products */,
+				9B67AA872D9255CE00B835DD /* NixonBoros24566667_BubblePop */,
+				9B67AA982D9255D200B835DD /* NixonBoros24566667_BubblePopTests */,
+				9B67AAA22D9255D200B835DD /* NixonBoros24566667_BubblePopUITests */,
+				9B67AA862D9255CE00B835DD /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		9B67AA412D9253EC00B835DD /* Products */ = {
+		9B67AA862D9255CE00B835DD /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9B67AA402D9253EC00B835DD /* 24566667_BubblePop.app */,
-				9B67AA502D9253EE00B835DD /* 24566667_BubblePopTests.xctest */,
-				9B67AA5A2D9253EE00B835DD /* 24566667_BubblePopUITests.xctest */,
+				9B67AA852D9255CE00B835DD /* NixonBoros24566667_BubblePop.app */,
+				9B67AA952D9255D200B835DD /* NixonBoros24566667_BubblePopTests.xctest */,
+				9B67AA9F2D9255D200B835DD /* NixonBoros24566667_BubblePopUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -95,134 +95,134 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		9B67AA3F2D9253EC00B835DD /* 24566667_BubblePop */ = {
+		9B67AA842D9255CE00B835DD /* NixonBoros24566667_BubblePop */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9B67AA642D9253EE00B835DD /* Build configuration list for PBXNativeTarget "24566667_BubblePop" */;
+			buildConfigurationList = 9B67AAA92D9255D200B835DD /* Build configuration list for PBXNativeTarget "NixonBoros24566667_BubblePop" */;
 			buildPhases = (
-				9B67AA3C2D9253EC00B835DD /* Sources */,
-				9B67AA3D2D9253EC00B835DD /* Frameworks */,
-				9B67AA3E2D9253EC00B835DD /* Resources */,
+				9B67AA812D9255CE00B835DD /* Sources */,
+				9B67AA822D9255CE00B835DD /* Frameworks */,
+				9B67AA832D9255CE00B835DD /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				9B67AA422D9253EC00B835DD /* 24566667_BubblePop */,
+				9B67AA872D9255CE00B835DD /* NixonBoros24566667_BubblePop */,
 			);
-			name = 24566667_BubblePop;
+			name = NixonBoros24566667_BubblePop;
 			packageProductDependencies = (
 			);
-			productName = 24566667_BubblePop;
-			productReference = 9B67AA402D9253EC00B835DD /* 24566667_BubblePop.app */;
+			productName = NixonBoros24566667_BubblePop;
+			productReference = 9B67AA852D9255CE00B835DD /* NixonBoros24566667_BubblePop.app */;
 			productType = "com.apple.product-type.application";
 		};
-		9B67AA4F2D9253EE00B835DD /* 24566667_BubblePopTests */ = {
+		9B67AA942D9255D200B835DD /* NixonBoros24566667_BubblePopTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9B67AA672D9253EE00B835DD /* Build configuration list for PBXNativeTarget "24566667_BubblePopTests" */;
+			buildConfigurationList = 9B67AAAC2D9255D200B835DD /* Build configuration list for PBXNativeTarget "NixonBoros24566667_BubblePopTests" */;
 			buildPhases = (
-				9B67AA4C2D9253EE00B835DD /* Sources */,
-				9B67AA4D2D9253EE00B835DD /* Frameworks */,
-				9B67AA4E2D9253EE00B835DD /* Resources */,
+				9B67AA912D9255D200B835DD /* Sources */,
+				9B67AA922D9255D200B835DD /* Frameworks */,
+				9B67AA932D9255D200B835DD /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				9B67AA522D9253EE00B835DD /* PBXTargetDependency */,
+				9B67AA972D9255D200B835DD /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
-				9B67AA532D9253EE00B835DD /* 24566667_BubblePopTests */,
+				9B67AA982D9255D200B835DD /* NixonBoros24566667_BubblePopTests */,
 			);
-			name = 24566667_BubblePopTests;
+			name = NixonBoros24566667_BubblePopTests;
 			packageProductDependencies = (
 			);
-			productName = 24566667_BubblePopTests;
-			productReference = 9B67AA502D9253EE00B835DD /* 24566667_BubblePopTests.xctest */;
+			productName = NixonBoros24566667_BubblePopTests;
+			productReference = 9B67AA952D9255D200B835DD /* NixonBoros24566667_BubblePopTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		9B67AA592D9253EE00B835DD /* 24566667_BubblePopUITests */ = {
+		9B67AA9E2D9255D200B835DD /* NixonBoros24566667_BubblePopUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9B67AA6A2D9253EE00B835DD /* Build configuration list for PBXNativeTarget "24566667_BubblePopUITests" */;
+			buildConfigurationList = 9B67AAAF2D9255D200B835DD /* Build configuration list for PBXNativeTarget "NixonBoros24566667_BubblePopUITests" */;
 			buildPhases = (
-				9B67AA562D9253EE00B835DD /* Sources */,
-				9B67AA572D9253EE00B835DD /* Frameworks */,
-				9B67AA582D9253EE00B835DD /* Resources */,
+				9B67AA9B2D9255D200B835DD /* Sources */,
+				9B67AA9C2D9255D200B835DD /* Frameworks */,
+				9B67AA9D2D9255D200B835DD /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				9B67AA5C2D9253EE00B835DD /* PBXTargetDependency */,
+				9B67AAA12D9255D200B835DD /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
-				9B67AA5D2D9253EE00B835DD /* 24566667_BubblePopUITests */,
+				9B67AAA22D9255D200B835DD /* NixonBoros24566667_BubblePopUITests */,
 			);
-			name = 24566667_BubblePopUITests;
+			name = NixonBoros24566667_BubblePopUITests;
 			packageProductDependencies = (
 			);
-			productName = 24566667_BubblePopUITests;
-			productReference = 9B67AA5A2D9253EE00B835DD /* 24566667_BubblePopUITests.xctest */;
+			productName = NixonBoros24566667_BubblePopUITests;
+			productReference = 9B67AA9F2D9255D200B835DD /* NixonBoros24566667_BubblePopUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		9B67AA382D9253EC00B835DD /* Project object */ = {
+		9B67AA7D2D9255CE00B835DD /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1620;
 				LastUpgradeCheck = 1620;
 				TargetAttributes = {
-					9B67AA3F2D9253EC00B835DD = {
+					9B67AA842D9255CE00B835DD = {
 						CreatedOnToolsVersion = 16.2;
 					};
-					9B67AA4F2D9253EE00B835DD = {
+					9B67AA942D9255D200B835DD = {
 						CreatedOnToolsVersion = 16.2;
-						TestTargetID = 9B67AA3F2D9253EC00B835DD;
+						TestTargetID = 9B67AA842D9255CE00B835DD;
 					};
-					9B67AA592D9253EE00B835DD = {
+					9B67AA9E2D9255D200B835DD = {
 						CreatedOnToolsVersion = 16.2;
-						TestTargetID = 9B67AA3F2D9253EC00B835DD;
+						TestTargetID = 9B67AA842D9255CE00B835DD;
 					};
 				};
 			};
-			buildConfigurationList = 9B67AA3B2D9253EC00B835DD /* Build configuration list for PBXProject "24566667_BubblePop" */;
+			buildConfigurationList = 9B67AA802D9255CE00B835DD /* Build configuration list for PBXProject "NixonBoros24566667_BubblePop" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
 			);
-			mainGroup = 9B67AA372D9253EC00B835DD;
+			mainGroup = 9B67AA7C2D9255CE00B835DD;
 			minimizedProjectReferenceProxies = 1;
 			preferredProjectObjectVersion = 77;
-			productRefGroup = 9B67AA412D9253EC00B835DD /* Products */;
+			productRefGroup = 9B67AA862D9255CE00B835DD /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				9B67AA3F2D9253EC00B835DD /* 24566667_BubblePop */,
-				9B67AA4F2D9253EE00B835DD /* 24566667_BubblePopTests */,
-				9B67AA592D9253EE00B835DD /* 24566667_BubblePopUITests */,
+				9B67AA842D9255CE00B835DD /* NixonBoros24566667_BubblePop */,
+				9B67AA942D9255D200B835DD /* NixonBoros24566667_BubblePopTests */,
+				9B67AA9E2D9255D200B835DD /* NixonBoros24566667_BubblePopUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		9B67AA3E2D9253EC00B835DD /* Resources */ = {
+		9B67AA832D9255CE00B835DD /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9B67AA4E2D9253EE00B835DD /* Resources */ = {
+		9B67AA932D9255D200B835DD /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9B67AA582D9253EE00B835DD /* Resources */ = {
+		9B67AA9D2D9255D200B835DD /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -232,21 +232,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		9B67AA3C2D9253EC00B835DD /* Sources */ = {
+		9B67AA812D9255CE00B835DD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9B67AA4C2D9253EE00B835DD /* Sources */ = {
+		9B67AA912D9255D200B835DD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9B67AA562D9253EE00B835DD /* Sources */ = {
+		9B67AA9B2D9255D200B835DD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -256,20 +256,20 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		9B67AA522D9253EE00B835DD /* PBXTargetDependency */ = {
+		9B67AA972D9255D200B835DD /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 9B67AA3F2D9253EC00B835DD /* 24566667_BubblePop */;
-			targetProxy = 9B67AA512D9253EE00B835DD /* PBXContainerItemProxy */;
+			target = 9B67AA842D9255CE00B835DD /* NixonBoros24566667_BubblePop */;
+			targetProxy = 9B67AA962D9255D200B835DD /* PBXContainerItemProxy */;
 		};
-		9B67AA5C2D9253EE00B835DD /* PBXTargetDependency */ = {
+		9B67AAA12D9255D200B835DD /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 9B67AA3F2D9253EC00B835DD /* 24566667_BubblePop */;
-			targetProxy = 9B67AA5B2D9253EE00B835DD /* PBXContainerItemProxy */;
+			target = 9B67AA842D9255CE00B835DD /* NixonBoros24566667_BubblePop */;
+			targetProxy = 9B67AAA02D9255D200B835DD /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		9B67AA622D9253EE00B835DD /* Debug */ = {
+		9B67AAA72D9255D200B835DD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -332,7 +332,7 @@
 			};
 			name = Debug;
 		};
-		9B67AA632D9253EE00B835DD /* Release */ = {
+		9B67AAA82D9255D200B835DD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -388,14 +388,14 @@
 			};
 			name = Release;
 		};
-		9B67AA652D9253EE00B835DD /* Debug */ = {
+		9B67AAAA2D9255D200B835DD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"24566667_BubblePop/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"NixonBoros24566667_BubblePop/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -408,7 +408,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "nixonboros.-4566667-BubblePop";
+				PRODUCT_BUNDLE_IDENTIFIER = "nixonboros.NixonBoros24566667-BubblePop";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -416,14 +416,14 @@
 			};
 			name = Debug;
 		};
-		9B67AA662D9253EE00B835DD /* Release */ = {
+		9B67AAAB2D9255D200B835DD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"24566667_BubblePop/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"NixonBoros24566667_BubblePop/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -436,7 +436,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "nixonboros.-4566667-BubblePop";
+				PRODUCT_BUNDLE_IDENTIFIER = "nixonboros.NixonBoros24566667-BubblePop";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -444,7 +444,7 @@
 			};
 			name = Release;
 		};
-		9B67AA682D9253EE00B835DD /* Debug */ = {
+		9B67AAAD2D9255D200B835DD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -453,16 +453,16 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "nixonboros.-4566667-BubblePopTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "nixonboros.NixonBoros24566667-BubblePopTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/24566667_BubblePop.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/24566667_BubblePop";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NixonBoros24566667_BubblePop.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/NixonBoros24566667_BubblePop";
 			};
 			name = Debug;
 		};
-		9B67AA692D9253EE00B835DD /* Release */ = {
+		9B67AAAE2D9255D200B835DD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -471,87 +471,87 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "nixonboros.-4566667-BubblePopTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "nixonboros.NixonBoros24566667-BubblePopTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/24566667_BubblePop.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/24566667_BubblePop";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NixonBoros24566667_BubblePop.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/NixonBoros24566667_BubblePop";
 			};
 			name = Release;
 		};
-		9B67AA6B2D9253EE00B835DD /* Debug */ = {
+		9B67AAB02D9255D200B835DD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "nixonboros.-4566667-BubblePopUITests";
+				PRODUCT_BUNDLE_IDENTIFIER = "nixonboros.NixonBoros24566667-BubblePopUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = 24566667_BubblePop;
+				TEST_TARGET_NAME = NixonBoros24566667_BubblePop;
 			};
 			name = Debug;
 		};
-		9B67AA6C2D9253EE00B835DD /* Release */ = {
+		9B67AAB12D9255D200B835DD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "nixonboros.-4566667-BubblePopUITests";
+				PRODUCT_BUNDLE_IDENTIFIER = "nixonboros.NixonBoros24566667-BubblePopUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = 24566667_BubblePop;
+				TEST_TARGET_NAME = NixonBoros24566667_BubblePop;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		9B67AA3B2D9253EC00B835DD /* Build configuration list for PBXProject "24566667_BubblePop" */ = {
+		9B67AA802D9255CE00B835DD /* Build configuration list for PBXProject "NixonBoros24566667_BubblePop" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				9B67AA622D9253EE00B835DD /* Debug */,
-				9B67AA632D9253EE00B835DD /* Release */,
+				9B67AAA72D9255D200B835DD /* Debug */,
+				9B67AAA82D9255D200B835DD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9B67AA642D9253EE00B835DD /* Build configuration list for PBXNativeTarget "24566667_BubblePop" */ = {
+		9B67AAA92D9255D200B835DD /* Build configuration list for PBXNativeTarget "NixonBoros24566667_BubblePop" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				9B67AA652D9253EE00B835DD /* Debug */,
-				9B67AA662D9253EE00B835DD /* Release */,
+				9B67AAAA2D9255D200B835DD /* Debug */,
+				9B67AAAB2D9255D200B835DD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9B67AA672D9253EE00B835DD /* Build configuration list for PBXNativeTarget "24566667_BubblePopTests" */ = {
+		9B67AAAC2D9255D200B835DD /* Build configuration list for PBXNativeTarget "NixonBoros24566667_BubblePopTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				9B67AA682D9253EE00B835DD /* Debug */,
-				9B67AA692D9253EE00B835DD /* Release */,
+				9B67AAAD2D9255D200B835DD /* Debug */,
+				9B67AAAE2D9255D200B835DD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9B67AA6A2D9253EE00B835DD /* Build configuration list for PBXNativeTarget "24566667_BubblePopUITests" */ = {
+		9B67AAAF2D9255D200B835DD /* Build configuration list for PBXNativeTarget "NixonBoros24566667_BubblePopUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				9B67AA6B2D9253EE00B835DD /* Debug */,
-				9B67AA6C2D9253EE00B835DD /* Release */,
+				9B67AAB02D9255D200B835DD /* Debug */,
+				9B67AAB12D9255D200B835DD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 9B67AA382D9253EC00B835DD /* Project object */;
+	rootObject = 9B67AA7D2D9255CE00B835DD /* Project object */;
 }

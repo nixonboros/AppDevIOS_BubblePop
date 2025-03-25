@@ -1,13 +1,13 @@
 //
-//  _4566667_BubblePopUITests.swift
-//  24566667_BubblePopUITests
+//  NixonBoros24566667_BubblePopUITests.swift
+//  NixonBoros24566667_BubblePopUITests
 //
 //  Created by Nixon Boros on 25/3/2025.
 //
 
 import XCTest
 
-final class _4566667_BubblePopUITests: XCTestCase {
+final class NixonBoros24566667_BubblePopUITests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
