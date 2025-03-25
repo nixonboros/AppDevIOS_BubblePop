@@ -13,7 +13,7 @@ struct ContentView: View {
     var body: some View {
         ZStack {
             Rectangle()
-                .fill(.white)
+                .fill(Color(hue: 0.098, saturation: 0.062, brightness: 1.0))
                 .ignoresSafeArea()
             
             VStack {
@@ -22,6 +22,7 @@ struct ContentView: View {
                 } else {
                     // Main Menu Screen
                     Text("Bubble Pop")
+                        .fontWeight(.bold)
                         .padding()
                         .font(.largeTitle)
                     
