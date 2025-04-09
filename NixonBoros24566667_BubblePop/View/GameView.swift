@@ -11,10 +11,12 @@ struct GameView: View {
     let playerName: String
     
     var body: some View {
-        Text(playerName)
+        ZStack {
+            Rectangle()
+                .fill(Color(.systemGroupedBackground))
+                .ignoresSafeArea()
+            
+            Text(playerName)
+        }
     }
-}
-
-#Preview {
-    GameView(playerName: "EmptyPlayerName")
 }

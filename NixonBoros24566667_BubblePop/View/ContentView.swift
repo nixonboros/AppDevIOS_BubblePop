@@ -15,40 +15,45 @@ struct ContentView: View {
         NavigationStack {
             ZStack {
                 Rectangle()
-                    .fill(Color(hue: 0.098, saturation: 0.062, brightness: 1.0))
+                    .fill(Color(.systemGroupedBackground))
                     .ignoresSafeArea()
                 
-                VStack {
+                VStack(spacing: 10) {
+                    Spacer()
+
                     Text("Bubble Pop")
-                        .fontWeight(.bold)
-                        .padding()
                         .font(.largeTitle)
-                    
+                        .fontWeight(.bold)
+                        .padding(.bottom, 10)
+
                     TextField("Enter Name", text: $gameController.playerName)
                         .padding()
                         .background(Color.gray.opacity(0.2))
-                        .cornerRadius(30)
-                        .padding(.horizontal)
+                        .cornerRadius(20)
+                        .padding(.horizontal, 40)
                         .font(.headline)
-                        .shadow(radius: 5)
-                    
+                        .shadow(radius: 2)
+
                     NavigationLink(destination: SettingsView(gameController: gameController), isActive: $showSettings) {
                         EmptyView()
                     }
-                    
+
                     Button(action: {
                         showSettings = true
                     }) {
                         Text("New Game")
                             .font(.headline)
+                            .frame(maxWidth: .infinity)
                             .padding()
-                            .foregroundColor(.white)
                             .background(gameController.playerName.isEmpty ? Color.gray.opacity(0.5) : Color.green)
-                            .cornerRadius(30)
-                            .shadow(radius: 10)
+                            .foregroundColor(.white)
+                            .cornerRadius(20)
+                            .shadow(radius: 5)
+                            .padding(.horizontal, 40)
                     }
                     .disabled(gameController.playerName.isEmpty)
-                    .padding()
+
+                    Spacer()
                 }
             }
         }

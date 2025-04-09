@@ -1,10 +1,3 @@
-//
-//  SettingsView.swift
-//  NixonBoros24566667_BubblePop
-//
-//  Created by Nixon Boros on 9/4/2025.
-//
-
 import SwiftUI
 
 struct SettingsView: View {
@@ -14,38 +7,61 @@ struct SettingsView: View {
     @State private var startGame = false
     
     var body: some View {
-        VStack(spacing: 20) {
-            Text("Game Settings")
-                .font(.largeTitle)
-                .fontWeight(.bold)
-                .padding(.top)
+        ZStack {
+            Rectangle()
+                .fill(Color(.systemGroupedBackground))
+                .ignoresSafeArea()
             
-            Stepper("Game Time: \(gameTime) sec", value: $gameTime, in: 10...300, step: 10)
+            VStack(spacing: 30) {
+                Spacer()
+
+                Text("Game Settings")
+                    .font(.largeTitle)
+                    .fontWeight(.bold)
+                    .padding(.bottom, 10)
+
+                Stepper(value: $gameTime, in: 10...300, step: 10) {
+                    Text("Game Time: \(gameTime) sec")
+                        .font(.headline)
+                }
                 .padding()
-            
-            Stepper("Max Bubbles: \(maxBubbles)", value: $maxBubbles, in: 1...50)
+                .background(Color.gray.opacity(0.2))
+                .cornerRadius(20)
+                .padding(.horizontal, 40)
+                .shadow(radius: 2)
+
+                Stepper(value: $maxBubbles, in: 1...50) {
+                    Text("Max Bubbles: \(maxBubbles)")
+                        .font(.headline)
+                }
                 .padding()
-            
-            NavigationLink(destination: GameView(playerName: gameController.playerName), isActive: $startGame) {
-                EmptyView()
+                .background(Color.gray.opacity(0.2))
+                .cornerRadius(20)
+                .padding(.horizontal, 40)
+                .shadow(radius: 2)
+
+                NavigationLink(destination: GameView(playerName: gameController.playerName), isActive: $startGame) {
+                    EmptyView()
+                }
+
+                Button(action: {
+                    gameController.gameTime = gameTime
+                    gameController.maxBubbles = maxBubbles
+                    startGame = true
+                }) {
+                    Text("Start Game")
+                        .font(.headline)
+                        .frame(maxWidth: .infinity)
+                        .padding()
+                        .background(Color.green)
+                        .foregroundColor(.white)
+                        .cornerRadius(20)
+                        .shadow(radius: 5)
+                        .padding(.horizontal, 40)
+                }
+
+                Spacer()
             }
-            
-            Button(action: {
-                // Save settings if needed
-                gameController.gameTime = gameTime
-                gameController.maxBubbles = maxBubbles
-                startGame = true
-            }) {
-                Text("Start Game")
-                    .font(.headline)
-                    .padding()
-                    .foregroundColor(.white)
-                    .background(Color.green)
-                    .cornerRadius(30)
-                    .shadow(radius: 10)
-            }
-            .padding()
         }
-        .padding()
     }
 }
