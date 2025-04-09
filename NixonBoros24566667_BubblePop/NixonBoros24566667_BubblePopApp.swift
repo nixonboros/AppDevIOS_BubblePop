@@ -9,9 +9,11 @@ import SwiftUI
 
 @main
 struct NixonBoros24566667_BubblePopApp: App {
+    @StateObject var gameController = GameController(gameModel: GameModel())
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(gameController: gameController)
         }
     }
 }

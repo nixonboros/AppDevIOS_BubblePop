@@ -8,13 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject var gameModel = GameModel()
     @ObservedObject var gameController: GameController
-    
-    init() {
-        let model = GameModel()
-        _gameController = ObservedObject(wrappedValue: GameController(gameModel: model))
-    }
     
     @State private var showSettings = false
 
@@ -33,7 +27,7 @@ struct ContentView: View {
                         .fontWeight(.bold)
                         .padding(.bottom, 10)
 
-                    TextField("Enter Name", text: $gameModel.playerName)
+                    TextField("Enter Name", text: $gameController.gameModel.playerName)
                         .padding()
                         .background(Color.gray.opacity(0.2))
                         .cornerRadius(20)
@@ -46,20 +40,20 @@ struct ContentView: View {
                     }
 
                     Button(action: {
-                        gameController.updatePlayerName(newName: gameModel.playerName)
+                        gameController.updatePlayerName(newName: gameController.gameModel.playerName)
                         showSettings = true
                     }) {
                         Text("New Game")
                             .font(.headline)
                             .frame(maxWidth: .infinity)
                             .padding()
-                            .background(gameModel.playerName.isEmpty ? Color.gray.opacity(0.5) : Color.green)
+                            .background(gameController.gameModel.playerName.isEmpty ? Color.gray.opacity(0.5) : Color.green)
                             .foregroundColor(.white)
                             .cornerRadius(20)
                             .shadow(radius: 5)
                             .padding(.horizontal, 40)
                     }
-                    .disabled(gameModel.playerName.isEmpty)
+                    .disabled(gameController.gameModel.playerName.isEmpty)
 
                     Spacer()
                 }
@@ -69,5 +63,5 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    ContentView(gameController: GameController(gameModel: GameModel()))
 }
