@@ -1,9 +1,14 @@
+//
+//  SettingsView.swift
+//  NixonBoros24566667_BubblePop
+//
+//  Created by Nixon Boros on 9/4/2025.
+//
+
 import SwiftUI
 
 struct SettingsView: View {
     @ObservedObject var gameController: GameController
-    @State private var gameTime: Int = 60
-    @State private var maxBubbles: Int = 15
     @State private var startGame = false
     
     var body: some View {
@@ -20,8 +25,19 @@ struct SettingsView: View {
                     .fontWeight(.bold)
                     .padding(.bottom, 10)
 
-                Stepper(value: $gameTime, in: 10...300, step: 10) {
-                    Text("Game Time: \(gameTime) sec")
+                Stepper(value: $gameController.gameModel.gameTime, in: 10...300, step: 10) {
+                    Text("Game Time: \(gameController.gameModel.gameTime) sec")
+                        .font(.headline)
+                }
+                
+                .padding()
+                .background(Color.gray.opacity(0.2))
+                .cornerRadius(20)
+                .padding(.horizontal, 40)
+                .shadow(radius: 2)
+
+                Stepper(value: $gameController.gameModel.maxBubbles, in: 1...50) {
+                    Text("Max Bubbles: \(gameController.gameModel.maxBubbles)")
                         .font(.headline)
                 }
                 .padding()
@@ -30,23 +46,11 @@ struct SettingsView: View {
                 .padding(.horizontal, 40)
                 .shadow(radius: 2)
 
-                Stepper(value: $maxBubbles, in: 1...50) {
-                    Text("Max Bubbles: \(maxBubbles)")
-                        .font(.headline)
-                }
-                .padding()
-                .background(Color.gray.opacity(0.2))
-                .cornerRadius(20)
-                .padding(.horizontal, 40)
-                .shadow(radius: 2)
-
-                NavigationLink(destination: GameView(playerName: gameController.playerName), isActive: $startGame) {
+                NavigationLink(destination: GameView(playerName: gameController.gameModel.playerName, gameTime: gameController.gameModel.gameTime, maxBubbles: gameController.gameModel.maxBubbles), isActive: $startGame) {
                     EmptyView()
                 }
 
                 Button(action: {
-                    gameController.gameTime = gameTime
-                    gameController.maxBubbles = maxBubbles
                     startGame = true
                 }) {
                     Text("Start Game")

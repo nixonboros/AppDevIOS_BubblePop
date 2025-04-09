@@ -9,14 +9,19 @@ import SwiftUI
 
 struct GameView: View {
     let playerName: String
+    let gameTime: Int
+    let maxBubbles: Int
     
     var body: some View {
         ZStack {
             Rectangle()
                 .fill(Color(.systemGroupedBackground))
                 .ignoresSafeArea()
-            
-            Text(playerName)
+            VStack {
+                Text(playerName)
+                Text("\(gameTime)")
+                Text("\(maxBubbles)")
+            }
         }
     }
 }

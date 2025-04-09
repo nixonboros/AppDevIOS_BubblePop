@@ -8,13 +8,19 @@
 import SwiftUI
 
 class GameController: ObservableObject {
-    @Published var playerName: String = ""
     @Published var isGameStarted: Bool = false
+    @Published var gameModel: GameModel
     
-    @Published var gameTime: Int = 60
-    @Published var maxBubbles: Int = 15
+    init(gameModel: GameModel) {
+        self.gameModel = gameModel
+    }
     
     func startGame() {
             isGameStarted = true
+    }
+    
+    // Game Settings Update Functions
+    func updatePlayerName(newName: String) {
+        gameModel.playerName = newName
     }
 }

@@ -8,8 +8,15 @@
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject var gameController = GameController()
-    @State private var showSettings = false  // Controls navigation
+    @StateObject var gameModel = GameModel()
+    @ObservedObject var gameController: GameController
+    
+    init() {
+        let model = GameModel()
+        _gameController = ObservedObject(wrappedValue: GameController(gameModel: model))
+    }
+    
+    @State private var showSettings = false
 
     var body: some View {
         NavigationStack {
@@ -26,7 +33,7 @@ struct ContentView: View {
                         .fontWeight(.bold)
                         .padding(.bottom, 10)
 
-                    TextField("Enter Name", text: $gameController.playerName)
+                    TextField("Enter Name", text: $gameModel.playerName)
                         .padding()
                         .background(Color.gray.opacity(0.2))
                         .cornerRadius(20)
@@ -39,19 +46,20 @@ struct ContentView: View {
                     }
 
                     Button(action: {
+                        gameController.updatePlayerName(newName: gameModel.playerName)
                         showSettings = true
                     }) {
                         Text("New Game")
                             .font(.headline)
                             .frame(maxWidth: .infinity)
                             .padding()
-                            .background(gameController.playerName.isEmpty ? Color.gray.opacity(0.5) : Color.green)
+                            .background(gameModel.playerName.isEmpty ? Color.gray.opacity(0.5) : Color.green)
                             .foregroundColor(.white)
                             .cornerRadius(20)
                             .shadow(radius: 5)
                             .padding(.horizontal, 40)
                     }
-                    .disabled(gameController.playerName.isEmpty)
+                    .disabled(gameModel.playerName.isEmpty)
 
                     Spacer()
                 }
