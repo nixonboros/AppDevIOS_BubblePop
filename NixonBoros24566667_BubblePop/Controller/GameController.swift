@@ -11,12 +11,10 @@ class GameController: ObservableObject {
     @Published var playerName: String = ""
     @Published var isGameStarted: Bool = false
     
+    @Published var gameTime: Int = 60
+    @Published var maxBubbles: Int = 15
+    
     func startGame() {
-        // Validate name entry
-        if playerName.isEmpty {
-            playerName = "EmptyPlayerName" // Use a default name if empty
-        }
-        
-        isGameStarted = true
+            isGameStarted = true
     }
 }
