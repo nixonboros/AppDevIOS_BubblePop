@@ -20,7 +20,7 @@ struct GameView: View {
                 .ignoresSafeArea()
 
             VStack(spacing: 20) {
-                // Header Info (Time + Score)
+                // header info (player name, time left, score, high score)
                 HStack {
                     VStack(alignment: .leading, spacing: 5) {
                         Text("Player: \(playerName)")
@@ -49,7 +49,7 @@ struct GameView: View {
 
                 Spacer()
 
-                // Placeholder for Game Area
+                // placeholder for game area
                 RoundedRectangle(cornerRadius: 20)
                     .fill(Color.gray.opacity(0.2))
                     .frame(maxWidth: .infinity, maxHeight: .infinity)

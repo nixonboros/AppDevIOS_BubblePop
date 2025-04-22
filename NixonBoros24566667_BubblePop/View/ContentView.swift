@@ -14,7 +14,7 @@ struct ContentView: View {
 
     var body: some View {
         NavigationStack {
-            ZStack(alignment: .topTrailing) {
+            ZStack {
                 Rectangle()
                     .fill(Color(.systemGroupedBackground))
                     .ignoresSafeArea()
@@ -58,22 +58,21 @@ struct ContentView: View {
                     .disabled(gameController.gameModel.playerName.isEmpty)
                     .animation(.easeInOut(duration: 0.3), value: gameController.gameModel.playerName)
 
-                    Spacer()
-                }
+                    // Leaderboard icon centered under button
+                    NavigationLink(destination: LeaderboardView()) {
+                        Image(systemName: "trophy.fill")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 30, height: 30)
+                            .foregroundColor(.white)
+                            .padding(12)
+                            .background(Color.yellow)
+                            .clipShape(Circle())
+                            .shadow(radius: 5)
+                    }
+                    .padding(.top, 20)
 
-                NavigationLink(destination: LeaderboardView()) {
-                    Image(systemName: "trophy.fill")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 30, height: 30)
-                        .foregroundColor(.white)
-                        .padding(12)
-                        .background(Color.yellow)
-                        .clipShape(Circle())
-                        .shadow(radius: 5)
-                        .padding(.trailing, 20)
-                        .padding(.top, 60)
-                        .scaleEffect(1.0)
+                    Spacer()
                 }
             }
         }

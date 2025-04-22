@@ -67,7 +67,6 @@ struct SettingsView: View {
                     Text("Reset to Default")
                         .font(.subheadline)
                         .foregroundColor(isModified ? .blue : .gray)
-                        .underline()
                 }
                 .padding(.top, 10)
                 .disabled(!isModified)
