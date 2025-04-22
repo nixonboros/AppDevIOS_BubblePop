@@ -8,7 +8,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "16DFA4E7-D180-4B1C-918C-61A6C7B0E13D"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "NixonBoros24566667_BubblePop/NixonBoros24566667_BubblePopApp.swift"

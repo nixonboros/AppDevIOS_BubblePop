@@ -95,7 +95,6 @@ struct SettingsView: View {
                         .cornerRadius(20)
                         .shadow(radius: 5)
                         .padding(.horizontal, 40)
-                        .animation(.easeInOut, value: startGame)
                 }
 
                 Spacer()

@@ -9,13 +9,12 @@ import SwiftUI
 
 struct ContentView: View {
     @ObservedObject var gameController: GameController
-    
     @State private var showSettings = false
+    @State private var showLeaderboard = false
 
     var body: some View {
         NavigationStack {
-            ZStack {
-                // bg
+            ZStack(alignment: .topTrailing) {
                 Rectangle()
                     .fill(Color(.systemGroupedBackground))
                     .ignoresSafeArea()
@@ -42,8 +41,8 @@ struct ContentView: View {
 
                     Button(action: {
                         withAnimation(.easeInOut(duration: 0.3)) {
-                                gameController.updatePlayerName(newName: gameController.gameModel.playerName)
-                                showSettings = true
+                            gameController.updatePlayerName(newName: gameController.gameModel.playerName)
+                            showSettings = true
                         }
                     }) {
                         Text("New Game")
@@ -58,8 +57,23 @@ struct ContentView: View {
                     }
                     .disabled(gameController.gameModel.playerName.isEmpty)
                     .animation(.easeInOut(duration: 0.3), value: gameController.gameModel.playerName)
-                    
+
                     Spacer()
+                }
+
+                NavigationLink(destination: LeaderboardView()) {
+                    Image(systemName: "trophy.fill")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 30, height: 30)
+                        .foregroundColor(.white)
+                        .padding(12)
+                        .background(Color.yellow)
+                        .clipShape(Circle())
+                        .shadow(radius: 5)
+                        .padding(.trailing, 20)
+                        .padding(.top, 60)
+                        .scaleEffect(1.0)
                 }
             }
         }
