@@ -9,25 +9,32 @@ import SwiftUI
 
 struct GameView: View {
     let playerName: String
-    let gameTime: Int
     let maxBubbles: Int
+
+    @State private var timeLeft: Int
+    @State private var timer: Timer? = nil
+
+    init(playerName: String, gameTime: Int, maxBubbles: Int) {
+        self.playerName = playerName
+        self.maxBubbles = maxBubbles
+        _timeLeft = State(initialValue: gameTime)
+    }
 
     var body: some View {
         ZStack {
-            // bg
             Rectangle()
                 .fill(Color(.systemGroupedBackground))
                 .ignoresSafeArea()
 
             VStack(spacing: 20) {
-                // header info (player name, time left, score, high score)
+                // Header info
                 HStack {
                     VStack(alignment: .leading, spacing: 5) {
                         Text("Player: \(playerName)")
                             .font(.headline)
                             .foregroundColor(.primary)
 
-                        Text("Time Left: \(gameTime)")
+                        Text("Time Left: \(timeLeft)")
                             .font(.subheadline)
                             .foregroundColor(.secondary)
                     }
@@ -49,7 +56,7 @@ struct GameView: View {
 
                 Spacer()
 
-                // placeholder for game area
+                // Placeholder game area
                 RoundedRectangle(cornerRadius: 20)
                     .fill(Color.gray.opacity(0.2))
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -61,6 +68,30 @@ struct GameView: View {
                 Spacer()
             }
         }
+        .onAppear {
+            startTimer()
+        }
+        .onDisappear {
+            stopTimer()
+        }
+    }
+
+    // MARK: - Timer Logic
+
+    private func startTimer() {
+        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
+            if timeLeft > 0 {
+                timeLeft -= 1
+            } else {
+                stopTimer()
+                // Placeholder for when timer hits 0
+                print("Timer reached 0 — placeholder action")
+            }
+        }
+    }
+
+    private func stopTimer() {
+        timer?.invalidate()
+        timer = nil
     }
 }
-
