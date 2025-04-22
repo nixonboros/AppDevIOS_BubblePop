@@ -11,17 +11,56 @@ struct GameView: View {
     let playerName: String
     let gameTime: Int
     let maxBubbles: Int
-    
+
     var body: some View {
         ZStack {
+            // bg
             Rectangle()
                 .fill(Color(.systemGroupedBackground))
                 .ignoresSafeArea()
-            VStack {
-                Text(playerName)
-                Text("\(gameTime)")
-                Text("\(maxBubbles)")
+
+            VStack(spacing: 20) {
+                // Header Info (Time + Score)
+                HStack {
+                    VStack(alignment: .leading, spacing: 5) {
+                        Text("Player: \(playerName)")
+                            .font(.headline)
+                            .foregroundColor(.primary)
+
+                        Text("Time Left: \(gameTime)")
+                            .font(.subheadline)
+                            .foregroundColor(.secondary)
+                    }
+
+                    Spacer()
+
+                    VStack(alignment: .trailing, spacing: 5) {
+                        Text("Score: 0")
+                            .font(.headline)
+                            .foregroundColor(.primary)
+
+                        Text("High Score: 0")
+                            .font(.subheadline)
+                            .foregroundColor(.secondary)
+                    }
+                }
+                .padding(.horizontal, 30)
+                .padding(.top, 40)
+
+                Spacer()
+
+                // Placeholder for Game Area
+                RoundedRectangle(cornerRadius: 20)
+                    .fill(Color.gray.opacity(0.2))
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .padding(.horizontal, 20)
+                    .overlay(Text("Game Area")
+                        .font(.title3)
+                        .foregroundColor(.gray))
+
+                Spacer()
             }
         }
     }
 }
+

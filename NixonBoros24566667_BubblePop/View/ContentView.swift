@@ -15,6 +15,7 @@ struct ContentView: View {
     var body: some View {
         NavigationStack {
             ZStack {
+                // bg
                 Rectangle()
                     .fill(Color(.systemGroupedBackground))
                     .ignoresSafeArea()
@@ -40,8 +41,10 @@ struct ContentView: View {
                     }
 
                     Button(action: {
-                        gameController.updatePlayerName(newName: gameController.gameModel.playerName)
-                        showSettings = true
+                        withAnimation(.easeInOut(duration: 0.3)) {
+                                gameController.updatePlayerName(newName: gameController.gameModel.playerName)
+                                showSettings = true
+                        }
                     }) {
                         Text("New Game")
                             .font(.headline)
@@ -54,7 +57,8 @@ struct ContentView: View {
                             .padding(.horizontal, 40)
                     }
                     .disabled(gameController.gameModel.playerName.isEmpty)
-
+                    .animation(.easeInOut(duration: 0.3), value: gameController.gameModel.playerName)
+                    
                     Spacer()
                 }
             }

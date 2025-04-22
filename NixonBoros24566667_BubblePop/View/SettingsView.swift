@@ -13,6 +13,7 @@ struct SettingsView: View {
     
     var body: some View {
         ZStack {
+            // bg
             Rectangle()
                 .fill(Color(.systemGroupedBackground))
                 .ignoresSafeArea()
