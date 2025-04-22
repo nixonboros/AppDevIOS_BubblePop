@@ -16,11 +16,19 @@ class GameController: ObservableObject {
     }
     
     func startGame() {
-            isGameStarted = true
+        isGameStarted = true
     }
     
     // Game Settings Update Functions
     func updatePlayerName(newName: String) {
         gameModel.playerName = newName
+    }
+    
+    func updateGameTime(gameTime: Int) {
+        gameModel.gameTime = gameTime
+    }
+    
+    func updateMaxBubbles(maxBubbles: Int) {
+        gameModel.maxBubbles = maxBubbles
     }
 }
