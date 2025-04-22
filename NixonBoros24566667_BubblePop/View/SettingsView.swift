@@ -11,11 +11,9 @@ struct SettingsView: View {
     @ObservedObject var gameController: GameController
     @State private var startGame = false
     
-    // Define default values for game time and max bubbles
     let defaultGameTime = 60
     let defaultMaxBubbles = 15
 
-    // Computed property to check if values have been modified
     var isModified: Bool {
         gameController.gameModel.gameTime != defaultGameTime ||
         gameController.gameModel.maxBubbles != defaultMaxBubbles
@@ -23,21 +21,18 @@ struct SettingsView: View {
 
     var body: some View {
         ZStack {
-            // Background
             Rectangle()
                 .fill(Color(.systemGroupedBackground))
                 .ignoresSafeArea()
 
-            VStack(spacing: 30) {
+            VStack(spacing: 20) {
                 Spacer()
 
-                // Title
                 Text("Game Settings")
                     .font(.largeTitle)
                     .fontWeight(.bold)
-                    .padding(.bottom, 10)
+                    .padding(.bottom, 20)
 
-                // Game Time Stepper
                 Stepper(value: $gameController.gameModel.gameTime, in: 10...300, step: 10) {
                     Text("Game Time: \(gameController.gameModel.gameTime) sec")
                         .font(.headline)
@@ -51,7 +46,6 @@ struct SettingsView: View {
                 .padding(.horizontal, 40)
                 .shadow(radius: 2)
 
-                // Max Bubbles Stepper
                 Stepper(value: $gameController.gameModel.maxBubbles, in: 1...50) {
                     Text("Max Bubbles: \(gameController.gameModel.maxBubbles)")
                         .font(.headline)
@@ -66,22 +60,18 @@ struct SettingsView: View {
                 .shadow(radius: 2)
 
                 Button(action: {
-                    // Reset to default values and force refresh
                     gameController.updateGameTime(gameTime: defaultGameTime)
                     gameController.updateMaxBubbles(maxBubbles: defaultMaxBubbles)
-                    
-                    // Force UI update by manually updating a state variable
-                    gameController.objectWillChange.send() // force view to refresh
+                    gameController.objectWillChange.send()
                 }) {
                     Text("Reset to Default")
                         .font(.subheadline)
-                        .foregroundColor(isModified ? .blue : .gray) // Change color based on modification status
+                        .foregroundColor(isModified ? .blue : .gray)
                         .underline()
                 }
                 .padding(.top, 10)
-                .disabled(!isModified)  // Disable button if no modifications
+                .disabled(!isModified)
 
-                // NavigationLink to GameView
                 NavigationLink(
                     destination: GameView(
                         playerName: gameController.gameModel.playerName,
@@ -93,7 +83,6 @@ struct SettingsView: View {
                     EmptyView()
                 }
 
-                // Start Game Button
                 Button(action: {
                     startGame = true
                 }) {
@@ -106,7 +95,7 @@ struct SettingsView: View {
                         .cornerRadius(20)
                         .shadow(radius: 5)
                         .padding(.horizontal, 40)
-                        .animation(.easeInOut, value: startGame) // Optional: Animation
+                        .animation(.easeInOut, value: startGame)
                 }
 
                 Spacer()
