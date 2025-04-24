@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct GameView: View {
+    @StateObject private var gameController = GameController(gameModel: GameModel())
+    
     let playerName: String
     let maxBubbles: Int
 
@@ -56,16 +58,33 @@ struct GameView: View {
 
                 Spacer()
 
-                // Placeholder game area
-                RoundedRectangle(cornerRadius: 20)
-                    .fill(Color.gray.opacity(0.2))
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .padding(.horizontal, 20)
-                    .overlay(Text("Game Area")
-                        .font(.title3)
-                        .foregroundColor(.gray))
+                // Game Area
+                ZStack {
+                    Rectangle()
+                        .fill(Color.gray.opacity(0.2))
+                        .cornerRadius(20)
+                        .padding(.horizontal, 20)
 
-                Spacer()
+                    ZStack {
+                        ForEach(gameController.bubbles) { bubble in
+                            Circle()
+                                .fill(bubble.color.color)
+                                .frame(width: 80, height: 80)
+                                .position(bubble.position)
+                                .onTapGesture {
+                                    // Placeholder for popping logic
+                                    print("Popped \(bubble.color)")
+                                }
+                        }
+                    }
+                    .contentShape(Rectangle())
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .onAppear {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                            gameController.generateBubbles(in: UIScreen.main.bounds.size)
+                        }
+                    }
+                }
             }
         }
         .onAppear {
