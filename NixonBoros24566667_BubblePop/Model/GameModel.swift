@@ -8,7 +8,13 @@
 import SwiftUI
 
 class GameModel: ObservableObject {
-    @Published var playerName: String = ""
-    @Published var gameTime: Int = 60
-    @Published var maxBubbles: Int = 15
+    var playerName: String
+        var gameTime: Int
+        var maxBubbles: Int
+
+        init(playerName: String = "", gameTime: Int = 60, maxBubbles: Int = 15) {
+            self.playerName = playerName
+            self.gameTime = gameTime
+            self.maxBubbles = maxBubbles
+        }
 }

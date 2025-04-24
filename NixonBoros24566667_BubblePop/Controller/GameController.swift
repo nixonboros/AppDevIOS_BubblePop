@@ -25,12 +25,14 @@ class GameController: ObservableObject {
     // Storing and Managing Bubbles Functions
     func generateBubbles(in size: CGSize) {
         var newBubbles: [BubbleModel.Bubble] = []
+        
         let max = gameModel.maxBubbles
+        let actualCount = Int.random(in: 0...max) // randomly pick num from 0 to maxbubbles
         let radius: CGFloat = 40
-        let margin: CGFloat = 20  // Invisible padding inside edges
+        let margin: CGFloat = 20  // padding so bubbles dont go out of bounds
 
         var attempts = 0
-        while newBubbles.count < max && attempts < max * 10 {
+        while newBubbles.count < actualCount && attempts < actualCount * 10 {
             let color = generateRandomColor()
 
             let x = CGFloat.random(in: (radius + margin)...(size.width - radius - margin))

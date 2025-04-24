@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct GameView: View {
-    @StateObject private var gameController = GameController(gameModel: GameModel())
-    
+    @StateObject private var gameController: GameController
+
     let playerName: String
     let maxBubbles: Int
 
@@ -20,6 +20,9 @@ struct GameView: View {
         self.playerName = playerName
         self.maxBubbles = maxBubbles
         _timeLeft = State(initialValue: gameTime)
+
+        let gameModel = GameModel(playerName: playerName, gameTime: gameTime, maxBubbles: maxBubbles)
+        _gameController = StateObject(wrappedValue: GameController(gameModel: gameModel))
     }
 
     var body: some View {
