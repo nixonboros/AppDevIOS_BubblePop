@@ -28,6 +28,7 @@ class GameController: ObservableObject {
         
         let max = gameModel.maxBubbles
         let actualCount = Int.random(in: 0...max) // randomly pick num from 0 to maxbubbles
+        print("Bubble Random Num:", actualCount)
         let radius: CGFloat = 40
         let margin: CGFloat = 20  // padding so bubbles dont go out of bounds
 

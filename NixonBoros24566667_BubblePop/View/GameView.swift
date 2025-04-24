@@ -56,7 +56,7 @@ struct GameView: View {
                             .foregroundColor(.secondary)
                     }
                 }
-                .padding(.horizontal, 30)
+                .padding(.horizontal, 20)
                 .padding(.top, 40)
 
                 Divider()
@@ -104,7 +104,6 @@ struct GameView: View {
             } else {
                 stopTimer()
                 // Placeholder for when timer hits 0
-                print("Timer reached 0 — placeholder action")
             }
         }
     }
