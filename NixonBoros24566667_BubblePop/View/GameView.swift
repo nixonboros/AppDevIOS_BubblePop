@@ -56,32 +56,31 @@ struct GameView: View {
                 .padding(.horizontal, 30)
                 .padding(.top, 40)
 
-                Spacer()
+                Divider()
+                    .background(Color.secondary)
+                    .padding(.horizontal, 10)
 
                 // Game Area
-                ZStack {
-                    Rectangle()
-                        .fill(Color.gray.opacity(0.2))
-                        .cornerRadius(20)
-                        .padding(.horizontal, 10)
-
+                GeometryReader { geometry in
                     ZStack {
+                        Rectangle()
+                            .fill(Color.gray.opacity(0.2))
+                            .padding(.horizontal, 10)
+                            .cornerRadius(20)
+
                         ForEach(gameController.bubbles) { bubble in
                             Circle()
                                 .fill(bubble.color.color)
                                 .frame(width: 80, height: 80)
                                 .position(bubble.position)
                                 .onTapGesture {
-                                    // Placeholder for popping logic
                                     print("Popped \(bubble.color)")
                                 }
                         }
                     }
-                    .contentShape(Rectangle())
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .onAppear {
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                            gameController.generateBubbles(in: UIScreen.main.bounds.size)
+                            gameController.generateBubbles(in: geometry.size)
                         }
                     }
                 }
