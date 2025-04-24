@@ -26,13 +26,15 @@ class GameController: ObservableObject {
     func generateBubbles(in size: CGSize) {
         var newBubbles: [BubbleModel.Bubble] = []
         let max = gameModel.maxBubbles
+        let radius: CGFloat = 40
+        let margin: CGFloat = 20  // Invisible padding inside edges
 
         var attempts = 0
         while newBubbles.count < max && attempts < max * 10 {
             let color = generateRandomColor()
-            let radius: CGFloat = 40
-            let x = CGFloat.random(in: radius...(size.width - radius))
-            let y = CGFloat.random(in: radius...(size.height - radius))
+
+            let x = CGFloat.random(in: (radius + margin)...(size.width - radius - margin))
+            let y = CGFloat.random(in: (radius + margin)...(size.height - radius - margin))
             let position = CGPoint(x: x, y: y)
 
             let newBubble = BubbleModel.Bubble(color: color, position: position)

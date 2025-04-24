@@ -63,7 +63,7 @@ struct GameView: View {
                     Rectangle()
                         .fill(Color.gray.opacity(0.2))
                         .cornerRadius(20)
-                        .padding(.horizontal, 20)
+                        .padding(.horizontal, 10)
 
                     ZStack {
                         ForEach(gameController.bubbles) { bubble in
