@@ -22,26 +22,6 @@ class GameController: ObservableObject {
         isGameStarted = true
     }
     
-    func startGameTimer(from seconds: Int) {
-        gameModel.gameTime = seconds
-        stopGameTimer() // in case timer is alr running
-
-        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] _ in
-            guard let self = self else { return }
-            if self.gameModel.gameTime > 0 {
-                self.gameModel.gameTime -= 1
-            } else {
-                self.stopGameTimer()
-                // Placeholder: Do something when the timer hits 0
-            }
-        }
-    }
-    
-    func stopGameTimer() {
-            timer?.invalidate()
-            timer = nil
-    }
-    
     // Storing and Managing Bubbles Functions
     func generateBubbles(in size: CGSize) {
         var newBubbles: [BubbleModel.Bubble] = []

@@ -95,8 +95,6 @@ struct GameView: View {
         }
     }
 
-    // MARK: - Timer Logic
-
     private func startTimer() {
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
             if timeLeft > 0 {
