@@ -103,9 +103,15 @@ struct GameView: View {
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
             if timeLeft > 0 {
                 timeLeft -= 1
+                
+                // Refresh bubbles each second
+                if let window = UIApplication.shared.windows.first {
+                    let screenSize = window.screen.bounds.size
+                    gameController.refreshBubbles(in: screenSize)
+                }
             } else {
                 stopTimer()
-                // Placeholder for when timer hits 0
+                // Placeholder for end-of-game logic
             }
         }
     }

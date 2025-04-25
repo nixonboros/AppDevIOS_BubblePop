@@ -103,6 +103,47 @@ class GameController: ObservableObject {
         bubbles.removeAll { $0.id == bubble.id }
     }
     
+    func refreshBubbles(in size: CGSize) {
+        let currentCount = bubbles.count
+        let max = gameModel.maxBubbles
+
+        // Decide how many to remove (random number)
+        let removeCount = Int.random(in: 0...min(currentCount, max / 2))
+        var newBubbles = bubbles
+
+        if removeCount > 0 {
+            newBubbles.shuffle()
+            newBubbles.removeLast(removeCount)
+        }
+
+        // Calculate how many new bubbles to add (without exceeding max)
+        let availableSlots = max - newBubbles.count
+        let newCount = Int.random(in: 0...availableSlots)
+
+        let radius: CGFloat = 40
+        let margin: CGFloat = 20
+        var addedCount = 0
+        var attempts = 0
+
+        while addedCount < newCount && attempts < 500 {
+            let color = generateRandomColor()
+            let x = CGFloat.random(in: (radius + margin)...(size.width - radius - margin))
+            let y = CGFloat.random(in: (radius + margin)...(size.height - radius - margin))
+            let position = CGPoint(x: x, y: y)
+            let newBubble = BubbleModel.Bubble(color: color, position: position)
+
+            if newBubbles.allSatisfy({ distance($0.position, position) > (radius * 2) + 5 }) {
+                newBubbles.append(newBubble)
+                addedCount += 1
+            }
+
+            attempts += 1
+        }
+
+        self.bubbles = newBubbles
+    }
+
+    
     // game Settings Update Functions
     func updatePlayerName(newName: String) {
         gameModel.playerName = newName
