@@ -10,7 +10,9 @@ import SwiftUI
 struct GameOverView: View {
     let playerName: String
     let finalScore: Int
-    let highScore: Int // Placeholder for now
+    var highScore: Int {
+        ScoreManager.shared.getHighScore(for: playerName)
+    }
     
     var body: some View {
         ZStack {
@@ -18,7 +20,7 @@ struct GameOverView: View {
                 .fill(Color(.systemGroupedBackground))
                 .ignoresSafeArea()
             
-            VStack(spacing: 30) {
+            VStack {
                 Spacer()
                 
                 Text("Game Over")
@@ -57,12 +59,9 @@ struct GameOverView: View {
                 }
                 .padding(.horizontal, 40)
 
-                Spacer()
+                Spacer() // Push the "Back to Menu" button to the bottom
 
-                Button(action: {
-                    // TODO: Hook up to navigate back to main menu
-                    print("Back to Menu or Restart Game")
-                }) {
+                NavigationLink(destination: ContentView(gameController: GameController(gameModel: GameModel()))) {
                     Text("Back to Menu")
                         .font(.headline)
                         .frame(maxWidth: .infinity)
@@ -72,14 +71,11 @@ struct GameOverView: View {
                         .cornerRadius(20)
                         .shadow(radius: 5)
                         .padding(.horizontal, 40)
+                        .padding(.bottom, 20)
+                        .navigationBarBackButtonHidden(true)
                 }
-
-                Spacer()
             }
+            .padding(.horizontal, 20)
         }
     }
-}
-
-#Preview {
-    GameOverView(playerName: "Nixon", finalScore: 250, highScore: 0)
 }

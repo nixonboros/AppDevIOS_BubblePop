@@ -69,6 +69,7 @@ struct ContentView: View {
                             .background(Color.yellow)
                             .clipShape(Circle())
                             .shadow(radius: 5)
+                            .navigationBarBackButtonHidden(true)
                     }
                     .padding(.top, 20)
 
