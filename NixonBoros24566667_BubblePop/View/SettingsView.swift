@@ -46,7 +46,7 @@ struct SettingsView: View {
                 .padding(.horizontal, 40)
                 .shadow(radius: 2)
 
-                Stepper(value: $gameController.gameModel.maxBubbles, in: 1...50) {
+                Stepper(value: $gameController.gameModel.maxBubbles, in: 1...15) {
                     Text("Max Bubbles: \(gameController.gameModel.maxBubbles)")
                         .font(.headline)
                 }
