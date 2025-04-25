@@ -40,7 +40,7 @@ class BubbleModel: ObservableObject {
             var color: Color {
                 switch self {
                 case .red: return .red
-                case .pink: return .pink
+                case .pink: return Color(red: 1.0, green: 0.5, blue: 0.7)
                 case .green: return .green
                 case .blue: return .blue
                 case .black: return .black

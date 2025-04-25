@@ -34,7 +34,7 @@ struct GameView: View {
                     .ignoresSafeArea()
                 
                 if isGameOver {
-                    // Transition to the EndOfGameView when the game is over
+                    // Transition to the GameOverView when the game is over
                     GameOverView(playerName: playerName, finalScore: gameController.score)
                 } else {
                     VStack(spacing: 20) {
@@ -136,9 +136,7 @@ struct GameView: View {
 
 
 // TO DO LIST (ignore):
-// when timer hits 0 > new view screen: score screen (final game score and highscore)
-// create database to store scores (or persistent file)
-// populate leaderboard view
+
 // show highscore during gameplay
 
 // 3,2,1 countdown (point values, hints)

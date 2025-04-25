@@ -36,7 +36,6 @@ struct ContentView: View {
                         .shadow(radius: 2)
 
                     NavigationLink(destination: SettingsView(gameController: gameController), isActive: $showSettings) {
-                        EmptyView()
                     }
 
                     Button(action: {
