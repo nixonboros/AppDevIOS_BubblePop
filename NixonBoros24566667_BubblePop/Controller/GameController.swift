@@ -17,9 +17,11 @@ class GameController: ObservableObject {
     private var scoreMultiplier: Double = 1.0
     
     @Published var score: Int = 0
+    @Published var highScore: Int = 0
     
     init(gameModel: GameModel) {
         self.gameModel = gameModel
+        self.highScore = ScoreManager.shared.getHighScore(for: gameModel.playerName)
     }
     
     func startGame() {
@@ -98,7 +100,12 @@ class GameController: ObservableObject {
         print("Score:", "+\(finalScore)")
         score += finalScore
         previousBubbleColor = bubble.color
-
+        
+        // check if score > highscore, will update during gameplay
+        if score > highScore {
+            highScore = score  // Update high score
+        }
+        
         // Remove the bubble
         bubbles.removeAll { $0.id == bubble.id }
     }

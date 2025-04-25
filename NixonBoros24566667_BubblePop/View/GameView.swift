@@ -16,7 +16,10 @@ struct GameView: View {
     @State private var timeLeft: Int
     @State private var timer: Timer? = nil
     @State private var isGameOver: Bool = false
-
+    
+    @State private var fadeIn: Bool = false
+    @State private var fadeOut: Bool = false
+    
     init(playerName: String, gameTime: Int, maxBubbles: Int) {
         self.playerName = playerName
         self.maxBubbles = maxBubbles
@@ -34,8 +37,14 @@ struct GameView: View {
                     .ignoresSafeArea()
                 
                 if isGameOver {
-                    // Transition to the GameOverView when the game is over
                     GameOverView(playerName: playerName, finalScore: gameController.score)
+                        // fade into next scene
+                        .opacity(fadeIn ? 1 : 0)
+                        .onAppear {
+                            withAnimation(.easeIn(duration: 1.0)) {
+                                fadeIn = true
+                            }
+                        }
                 } else {
                     VStack(spacing: 20) {
                         // Header info
@@ -57,7 +66,7 @@ struct GameView: View {
                                     .font(.headline)
                                     .foregroundColor(.primary)
                                 
-                                Text("High Score: 0")
+                                Text("High Score: \(gameController.highScore)")
                                     .font(.subheadline)
                                     .foregroundColor(.secondary)
                             }
@@ -100,6 +109,15 @@ struct GameView: View {
                             }
                         }
                     }
+                    // fade out anim
+                    .opacity(fadeOut ? 0 : 1)
+                    .onChange(of: timeLeft) { newTimeLeft in
+                        if newTimeLeft == 0 {
+                            withAnimation(.easeOut(duration: 1.0)) {
+                                fadeOut = true
+                            }
+                        }
+                    }
                 }
             }
             .onAppear { // as gameview opens
@@ -133,6 +151,7 @@ struct GameView: View {
         ScoreManager.shared.updateScore(for: playerName, score: gameController.score)
     }
 }
+
 
 
 // TO DO LIST (ignore):
