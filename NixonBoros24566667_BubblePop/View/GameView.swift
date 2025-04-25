@@ -84,9 +84,13 @@ struct GameView: View {
                         }
                     }
                     .onAppear {
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { // delays bubble generation by 0.1s
                             gameController.generateBubbles(in: geometry.size)
                         }
+                    }
+                    .onChange(of: timeLeft) { _ in
+                        // call refresh bubbles every 1s
+                        gameController.refreshBubbles(in: geometry.size)
                     }
                 }
             }
@@ -103,12 +107,6 @@ struct GameView: View {
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
             if timeLeft > 0 {
                 timeLeft -= 1
-                
-                // Refresh bubbles each second
-                if let window = UIApplication.shared.windows.first {
-                    let screenSize = window.screen.bounds.size
-                    gameController.refreshBubbles(in: screenSize)
-                }
             } else {
                 stopTimer()
                 // Placeholder for end-of-game logic
