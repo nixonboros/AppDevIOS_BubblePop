@@ -47,7 +47,7 @@ struct GameView: View {
                     Spacer()
 
                     VStack(alignment: .trailing, spacing: 5) {
-                        Text("Score: 0")
+                        Text("Score: \(gameController.score)")
                             .font(.headline)
                             .foregroundColor(.primary)
 
@@ -78,6 +78,8 @@ struct GameView: View {
                                 .position(bubble.position)
                                 .onTapGesture {
                                     print("Popped \(bubble.color)")
+                                    
+                                    gameController.popBubble(bubble: bubble)
                                 }
                         }
                     }
@@ -89,10 +91,10 @@ struct GameView: View {
                 }
             }
         }
-        .onAppear {
+        .onAppear { // as gameview opens
             startTimer()
         }
-        .onDisappear {
+        .onDisappear { // as gameview closes
             stopTimer()
         }
     }

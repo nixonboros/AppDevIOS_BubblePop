@@ -13,6 +13,10 @@ class GameController: ObservableObject {
     @Published var bubbles: [BubbleModel.Bubble] = []
     
     private var timer: Timer? = nil
+    private var previousBubbleColor: BubbleModel.BubbleColour? = nil
+    private var scoreMultiplier: Double = 1.0
+    
+    @Published var score: Int = 0
     
     init(gameModel: GameModel) {
         self.gameModel = gameModel
@@ -22,13 +26,13 @@ class GameController: ObservableObject {
         isGameStarted = true
     }
     
-    // Storing and Managing Bubbles Functions
+    // generate bubbles
     func generateBubbles(in size: CGSize) {
         var newBubbles: [BubbleModel.Bubble] = []
         
         let max = gameModel.maxBubbles
         let actualCount = Int.random(in: 1...max) // randomly pick num from 1 to maxbubbles
-        print("Bubble Random Num:", actualCount)
+        print("Random Bubbles Generated:", actualCount)
         let radius: CGFloat = 40 // circle radius
         let margin: CGFloat = 20  // padding so bubbles dont go out of bounds
 
@@ -60,6 +64,7 @@ class GameController: ObservableObject {
         self.bubbles = newBubbles
     }
 
+    // generate random bubble colour
     private func generateRandomColor() -> BubbleModel.BubbleColour {
         let roll = Double.random(in: 0...1)
         var total: Double = 0
@@ -72,11 +77,33 @@ class GameController: ObservableObject {
         return .red // fallback
     }
 
+    // calc distance
     private func distance(_ a: CGPoint, _ b: CGPoint) -> CGFloat {
         return hypot(a.x - b.x, a.y - b.y)
     }
     
-    // Game Settings Update Functions
+    // pop bubble
+    func popBubble(bubble: BubbleModel.Bubble) {
+        let baseScore = bubble.color.pointValue
+        let finalScore: Int
+        
+        if let previousColor = previousBubbleColor, previousColor == bubble.color {
+            // Apply multiplier for consecutive bubbles
+            finalScore = Int((Double(baseScore) * 1.5).rounded())
+        } else {
+            finalScore = baseScore
+        }
+
+        // Update score
+        print("Score:", "+\(finalScore)")
+        score += finalScore
+        previousBubbleColor = bubble.color
+
+        // Remove the bubble
+        bubbles.removeAll { $0.id == bubble.id }
+    }
+    
+    // game Settings Update Functions
     func updatePlayerName(newName: String) {
         gameModel.playerName = newName
     }
