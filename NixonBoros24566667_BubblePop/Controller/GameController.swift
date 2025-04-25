@@ -32,7 +32,7 @@ class GameController: ObservableObject {
         
         let max = gameModel.maxBubbles
         let actualCount = Int.random(in: 1...max) // randomly pick num from 1 to maxbubbles
-        print("Random Bubbles Generated:", actualCount)
+        print("Bubbles Generated:", actualCount)
         let radius: CGFloat = 40 // circle radius
         let margin: CGFloat = 20  // padding so bubbles dont go out of bounds
 
@@ -119,6 +119,7 @@ class GameController: ObservableObject {
         // Calculate how many new bubbles to add (without exceeding max)
         let availableSlots = max - newBubbles.count
         let newCount = Int.random(in: 0...availableSlots)
+        print("Bubbles Removed & Generated:", removeCount, "|", newCount)
 
         let radius: CGFloat = 40
         let margin: CGFloat = 20

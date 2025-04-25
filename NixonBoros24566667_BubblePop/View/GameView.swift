@@ -84,7 +84,7 @@ struct GameView: View {
                         }
                     }
                     .onAppear {
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { // delays bubble generation by 0.1s
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { // delays bubble generation by 0.1s to avoid swiftui not loading in before bubbles
                             gameController.generateBubbles(in: geometry.size)
                         }
                     }
