@@ -16,6 +16,7 @@ struct GameView: View {
     @State private var timeLeft: Int
     @State private var timer: Timer? = nil
     @State private var isGameOver: Bool = false
+    @State private var bubbleScales: [UUID: CGFloat] = [:]
 
     @State private var fadeIn: Bool = false
     @State private var fadeOut: Bool = false
@@ -96,12 +97,28 @@ struct GameView: View {
                                     Circle()
                                         .fill(bubble.color.color)
                                         .frame(width: 80, height: 80)
+                                        .scaleEffect(bubbleScales[bubble.id] ?? 1.0) // use the bubble's scale
                                         .position(bubble.position)
                                         .shadow(radius: 5)
+                                        .onAppear {
+                                            // when bubble appears, start with small scale and animate to full size
+                                            bubbleScales[bubble.id] = 0.0
+                                            withAnimation(.spring(response: 0.4, dampingFraction: 0.6)) {
+                                                bubbleScales[bubble.id] = 1.0
+                                            }
+                                        }
                                         .onTapGesture {
-                                            gameController.popBubble(bubble: bubble)
+                                            // when tapped, shrink and then pop
+                                            withAnimation(.easeIn(duration: 0.1)) {
+                                                bubbleScales[bubble.id] = 0.0
+                                            }
+                                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                                                gameController.popBubble(bubble: bubble)
+                                                bubbleScales.removeValue(forKey: bubble.id)
+                                            }
                                         }
                                 }
+
                             }
                             .onAppear {
                                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {

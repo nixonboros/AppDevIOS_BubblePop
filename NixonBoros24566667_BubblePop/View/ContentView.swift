@@ -115,6 +115,4 @@ struct ContentView: View {
 
 // TO DO LIST (ignore):
 
-// fade out/in some screens (instead of default slide)
-// animations when popping/generating bubbles
 // score changes/combo length display with animations in response to taps
