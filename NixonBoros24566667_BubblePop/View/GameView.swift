@@ -156,12 +156,3 @@ struct GameView: View {
         ScoreManager.shared.updateScore(for: playerName, score: gameController.score)
     }
 }
-
-
-
-// TO DO LIST (ignore):
-
-// add go to leaderboard/back to menu for GameOver screen
-// 3,2,1 countdown (point values, hints)
-// animations when popping/generating bubbles
-// score changes/combo length display with animations in response to taps

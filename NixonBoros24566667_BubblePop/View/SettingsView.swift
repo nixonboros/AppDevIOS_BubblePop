@@ -91,9 +91,7 @@ struct SettingsView: View {
                 }
 
                 Button(action: {
-                    withAnimation {
-                        startGame = true
-                    }
+                    startGame = true
                 }) {
                     Text("Start Game")
                         .font(.headline)

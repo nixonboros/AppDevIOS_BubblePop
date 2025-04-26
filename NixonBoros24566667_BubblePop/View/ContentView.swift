@@ -43,10 +43,8 @@ struct ContentView: View {
 
                     // new game button
                     Button(action: {
-                        withAnimation(.easeInOut(duration: 0.4)) {
-                            gameController.updatePlayerName(newName: gameController.gameModel.playerName)
-                            showSettings = true
-                        }
+                        gameController.updatePlayerName(newName: gameController.gameModel.playerName)
+                        showSettings = true
                     }) {
                         Text("New Game")
                             .font(.system(size: 20, weight: .bold, design: .rounded))
@@ -56,7 +54,8 @@ struct ContentView: View {
                             .foregroundColor(.white)
                             .cornerRadius(25)
                             .shadow(color: .black.opacity(0.3), radius: 5, x: 0, y: 4)
-                            .scaleEffect(gameController.gameModel.playerName.isEmpty ? 1.0 : 1.05)
+                            .scaleEffect(gameController.gameModel.playerName.isEmpty ? 1.0 : 1.03)
+                            .animation(.easeInOut(duration: 0.4), value: gameController.gameModel.playerName.isEmpty)
                     }
                     .disabled(gameController.gameModel.playerName.isEmpty)
                     .padding(.horizontal, 40)
@@ -100,3 +99,10 @@ struct ContentView: View {
 #Preview {
     ContentView(gameController: GameController(gameModel: GameModel()))
 }
+
+// TO DO LIST (ignore):
+
+// add go to leaderboard/back to menu for GameOver screen
+// 3,2,1 countdown (point values, hints)
+// animations when popping/generating bubbles
+// score changes/combo length display with animations in response to taps
