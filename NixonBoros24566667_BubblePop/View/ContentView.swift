@@ -100,6 +100,7 @@ struct ContentView: View {
 
 // TO DO LIST (ignore):
 
+// fade out/in anim from settings to gameview
 // 3,2,1 countdown (point values, hints)
 // animations when popping/generating bubbles
 // score changes/combo length display with animations in response to taps

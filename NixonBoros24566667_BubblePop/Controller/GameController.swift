@@ -150,7 +150,6 @@ class GameController: ObservableObject {
 
         self.bubbles = newBubbles
     }
-
     
     // game settings update funcs
     func updatePlayerName(newName: String) {
