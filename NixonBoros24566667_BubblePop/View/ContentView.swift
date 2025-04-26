@@ -30,15 +30,24 @@ struct ContentView: View {
                         .shadow(color: .black.opacity(0.3), radius: 3, x: 0, y: 2)
 
                     // name input
-                    TextField("Enter your name", text: $gameController.gameModel.playerName)
-                        .padding()
-                        .background(.white.opacity(0.2))
-                        .foregroundColor(.white)
-                        .font(.title2.bold())
-                        .cornerRadius(30)
-                        .overlay(RoundedRectangle(cornerRadius: 30).stroke(.white.opacity(0.4), lineWidth: 1))
-                        .padding(.horizontal, 40)
-                        .shadow(radius: 5)
+                    TextField(
+                        "",
+                        text: $gameController.gameModel.playerName,
+                        prompt: Text("Enter your name")
+                            .foregroundColor(.white.opacity(0.6))
+                    )
+                    .padding()
+                    .background(.white.opacity(0.2))
+                    .foregroundColor(.white)
+                    .font(.title2.bold())
+                    .cornerRadius(30)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 30)
+                            .stroke(.white.opacity(0.4), lineWidth: 1)
+                    )
+                    .padding(.horizontal, 40)
+                    .shadow(radius: 5)
+
 
                     // new game button
                     Button(action: {
@@ -100,7 +109,6 @@ struct ContentView: View {
 
 // TO DO LIST (ignore):
 
-// fade out/in anim from settings to gameview
-// 3,2,1 countdown (point values, hints)
+// fade out/in some screens (instead of default slide)
 // animations when popping/generating bubbles
 // score changes/combo length display with animations in response to taps

@@ -126,7 +126,7 @@ class GameController: ObservableObject {
         // calculate how many new bubbles to add (without exceeding max)
         let availableSlots = max - newBubbles.count
         let newCount = Int.random(in: 1...availableSlots)
-        print("Bubbles Removed & Generated:", removeCount, "|", newCount)
+        print(removeCount, "bubbles removed |", newCount, "bubbles generated")
 
         let radius: CGFloat = 40
         let margin: CGFloat = 20
