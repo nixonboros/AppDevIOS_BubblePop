@@ -21,7 +21,7 @@ class GameController: ObservableObject {
     
     init(gameModel: GameModel) {
         self.gameModel = gameModel
-        self.highScore = ScoreManager.shared.getHighScore(for: gameModel.playerName)
+        self.highScore = ScoreManager.shared.getHighScore()
     }
     
     func startGame() {

@@ -46,8 +46,8 @@ class ScoreManager {
         try? data.write(to: url)
     }
 
-    func getHighScore(for playerName: String) -> Int {
-        return scores[playerName] ?? 0
+    func getHighScore() -> Int {
+        return scores.values.max() ?? 0
     }
 
     func updateScore(for playerName: String, score: Int) {

@@ -15,7 +15,7 @@ struct GameOverView: View {
     let finalScore: Int
 
     var highScore: Int {
-        ScoreManager.shared.getHighScore(for: playerName)
+        ScoreManager.shared.getHighScore()
     }
 
     var body: some View {
