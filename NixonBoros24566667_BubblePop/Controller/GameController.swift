@@ -97,7 +97,8 @@ class GameController: ObservableObject {
         }
 
         // update score
-        print("Score:", "+\(finalScore)")
+        print("Score:", "+\(finalScore) (\(bubble.color))")
+
         score += finalScore
         previousBubbleColor = bubble.color
         
@@ -125,7 +126,7 @@ class GameController: ObservableObject {
 
         // calculate how many new bubbles to add (without exceeding max)
         let availableSlots = max - newBubbles.count
-        let newCount = Int.random(in: 1...availableSlots)
+        let newCount = Int.random(in: 0...availableSlots)
         print(removeCount, "bubbles removed |", newCount, "bubbles generated")
 
         let radius: CGFloat = 40

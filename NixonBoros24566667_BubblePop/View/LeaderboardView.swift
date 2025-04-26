@@ -13,7 +13,7 @@ struct LeaderboardView: View {
     var body: some View {
         ZStack {
             // bg gradient
-            LinearGradient(gradient: Gradient(colors: [Color.black.opacity(0.9), Color.yellow.opacity(0.7)]),
+            LinearGradient(gradient: Gradient(colors: [Color.black.opacity(0.9), Color.yellow.opacity(0.5)]),
                            startPoint: .top,
                            endPoint: .bottom)
                 .ignoresSafeArea()

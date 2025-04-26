@@ -99,7 +99,6 @@ struct GameView: View {
                                         .position(bubble.position)
                                         .shadow(radius: 5)
                                         .onTapGesture {
-                                            print("Popped \(bubble.color)")
                                             gameController.popBubble(bubble: bubble)
                                         }
                                 }

@@ -10,6 +10,7 @@ import SwiftUI
 struct ContentView: View {
     @ObservedObject var gameController: GameController
     @State private var showSettings = false
+    @State private var showLeaderboard = false
     
     var body: some View {
         NavigationStack {
@@ -74,7 +75,9 @@ struct ContentView: View {
                     }
 
                     // leaderboard button
-                    NavigationLink(destination: LeaderboardView()) {
+                    Button(action: {
+                        showLeaderboard = true
+                    }) {
                         VStack(spacing: 8) {
                             Image(systemName: "trophy.fill")
                                 .resizable()
@@ -92,11 +95,14 @@ struct ContentView: View {
                         .padding(.top, 30)
                         .scaleEffect(1.1)
                     }
+                    .sheet(isPresented: $showLeaderboard) {
+                        LeaderboardView()
+                            .presentationDetents([.fraction(0.99), .large])
+                    }
 
                     Spacer()
                 }
                 .padding(.bottom, 30)
-                .transition(.opacity.combined(with: .move(edge: .bottom)))
             }
         }
         .navigationBarBackButtonHidden(true)
