@@ -115,7 +115,7 @@ class GameController: ObservableObject {
         let max = gameModel.maxBubbles
 
         // decide how many to remove (random number)
-        let removeCount = Int.random(in: 1...min(currentCount, max / 2))
+        let removeCount = Int.random(in: 0...min(currentCount, max / 2))
         var newBubbles = bubbles
 
         if removeCount > 0 {
