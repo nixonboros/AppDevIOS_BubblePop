@@ -10,7 +10,6 @@ import SwiftUI
 struct ContentView: View {
     @ObservedObject var gameController: GameController
     @State private var showSettings = false
-    @State private var showLeaderboard = false
     
     var body: some View {
         NavigationStack {
@@ -60,10 +59,9 @@ struct ContentView: View {
                     .disabled(gameController.gameModel.playerName.isEmpty)
                     .padding(.horizontal, 40)
 
-                    // navigationlink to settingsview (hidden)
+                    // navigationlink to settingsview
                     NavigationLink(destination: SettingsView(gameController: gameController),
                                    isActive: $showSettings) {
-                        EmptyView()
                     }
 
                     // leaderboard button
@@ -102,7 +100,6 @@ struct ContentView: View {
 
 // TO DO LIST (ignore):
 
-// add go to leaderboard/back to menu for GameOver screen
 // 3,2,1 countdown (point values, hints)
 // animations when popping/generating bubbles
 // score changes/combo length display with animations in response to taps
