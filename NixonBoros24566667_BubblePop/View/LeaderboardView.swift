@@ -14,8 +14,8 @@ struct LeaderboardView: View {
         ZStack {
             // bg gradient
             LinearGradient(gradient: Gradient(colors: [Color.black.opacity(0.9), Color.yellow.opacity(0.7)]),
-                           startPoint: .topLeading,
-                           endPoint: .bottomTrailing)
+                           startPoint: .top,
+                           endPoint: .bottom)
                 .ignoresSafeArea()
 
             VStack(spacing: 20) {

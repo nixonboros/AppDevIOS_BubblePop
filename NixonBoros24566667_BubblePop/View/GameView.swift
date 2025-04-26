@@ -34,15 +34,14 @@ struct GameView: View {
             ZStack {
                 // bg gradient
                 LinearGradient(
-                    gradient: Gradient(colors: [Color(.systemBlue).opacity(0.3), Color(.systemPurple).opacity(0.3)]),
-                    startPoint: .topLeading,
-                    endPoint: .bottomTrailing
+                    gradient: Gradient(colors: [Color.black.opacity(0.85), Color.white.opacity(0.3)]),
+                    startPoint: .top,
+                    endPoint: .bottom
                 )
                 .ignoresSafeArea()
 
                 if isGameOver {
                     GameOverView(playerName: playerName, finalScore: gameController.score)
-                        // fade into gameover scene anim
                         .opacity(fadeIn ? 1 : 0)
                         .onAppear {
                             withAnimation(.easeIn(duration: 1.0)) {
@@ -56,12 +55,13 @@ struct GameView: View {
                             VStack(alignment: .leading, spacing: 5) {
                                 Text("Player: \(playerName)")
                                     .font(.headline)
-                                    .foregroundColor(.primary)
-                                    .shadow(radius: 1)
+                                    .foregroundColor(.white)
+                                    .shadow(radius: 2)
 
                                 Text("Time Left: \(timeLeft)")
                                     .font(.subheadline)
-                                    .foregroundColor(.secondary)
+                                    .foregroundColor(.white)
+                                    .shadow(radius: 1)
                             }
 
                             Spacer()
@@ -69,19 +69,20 @@ struct GameView: View {
                             VStack(alignment: .trailing, spacing: 5) {
                                 Text("Score: \(gameController.score)")
                                     .font(.headline)
-                                    .foregroundColor(.primary)
-                                    .shadow(radius: 1)
+                                    .foregroundColor(.white)
+                                    .shadow(radius: 2)
 
                                 Text("High Score: \(gameController.highScore)")
                                     .font(.subheadline)
-                                    .foregroundColor(.secondary)
+                                    .foregroundColor(.white)
+                                    .shadow(radius: 1)
                             }
                         }
                         .padding(.horizontal, 20)
                         .padding(.top, 40)
 
                         Divider()
-                            .background(Color.secondary)
+                            .background(.white)
                             .padding(.horizontal, 10)
 
                         // game area
@@ -109,12 +110,11 @@ struct GameView: View {
                                 }
                             }
                             .onChange(of: timeLeft) { _ in
-                                // call refresh bubbles every 1s
+                                // refresh bubbles every 1s
                                 gameController.refreshBubbles(in: geometry.size)
                             }
                         }
                     }
-                    // fade out anim when timer hits 0
                     .opacity(fadeOut ? 0 : 1)
                     .onChange(of: timeLeft) { newTimeLeft in
                         if newTimeLeft == 0 {
@@ -125,11 +125,11 @@ struct GameView: View {
                     }
                 }
             }
-            .onAppear { // as gameview opens
+            .onAppear {
                 startTimer()
             }
-            .onDisappear { // as gameview closes
-                stopTimer() // saves/updates score to highscores.json
+            .onDisappear {
+                stopTimer() // saves and/or updates score to highscores.json
             }
             .navigationBarBackButtonHidden(true)
         }

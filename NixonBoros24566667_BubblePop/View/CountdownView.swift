@@ -16,8 +16,8 @@ struct CountdownView: View {
         ZStack {
             // background
             LinearGradient(gradient: Gradient(colors: [Color.black, Color.black.opacity(0.8)]),
-                           startPoint: .topLeading,
-                           endPoint: .bottomTrailing)
+                           startPoint: .top,
+                           endPoint: .bottom)
                 .ignoresSafeArea()
 
             VStack(spacing: 40) {
