@@ -93,6 +93,7 @@ struct ContentView: View {
                 .transition(.opacity.combined(with: .move(edge: .bottom)))
             }
         }
+        .navigationBarBackButtonHidden(true)
     }
 }
 

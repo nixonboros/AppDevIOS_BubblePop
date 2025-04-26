@@ -62,8 +62,24 @@ struct GameOverView: View {
 
                 Spacer()
 
+                // back to main menu
                 NavigationLink(destination: ContentView(gameController: GameController(gameModel: GameModel()))) {
                     Text("Back to Menu")
+                        .font(.headline)
+                        .frame(maxWidth: .infinity)
+                        .padding()
+                        .background(Color.white.opacity(0.2))
+                        .foregroundColor(.white)
+                        .cornerRadius(25)
+                        .shadow(radius: 4)
+                        .padding(.horizontal, 40)
+                        .padding(.bottom, 10)
+                        .navigationBarBackButtonHidden(true)
+                }
+
+                // view leaderboard
+                NavigationLink(destination: LeaderboardView()) {
+                    Text("View Leaderboard")
                         .font(.headline)
                         .frame(maxWidth: .infinity)
                         .padding()
@@ -80,5 +96,3 @@ struct GameOverView: View {
         }
     }
 }
-
-
