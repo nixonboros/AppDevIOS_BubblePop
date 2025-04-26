@@ -14,16 +14,67 @@ struct CountdownView: View {
 
     var body: some View {
         ZStack {
-            Color.black.ignoresSafeArea()
+            // background
+            LinearGradient(gradient: Gradient(colors: [Color.black, Color.black.opacity(0.8)]),
+                           startPoint: .topLeading,
+                           endPoint: .bottomTrailing)
+                .ignoresSafeArea()
 
-            Text("\(countdown)")
-                .font(.system(size: 100, weight: .bold, design: .rounded))
-                .foregroundColor(.white)
-                .opacity(opacity)
-                .scaleEffect(1.5)
-                .onAppear {
-                    startCountdown()
+            VStack(spacing: 40) {
+                Spacer()
+
+                // countdown number
+                Text("\(countdown)")
+                    .font(.system(size: 100, weight: .bold, design: .rounded))
+                    .foregroundColor(.white)
+                    .opacity(opacity)
+                    .scaleEffect(1.5)
+                    .onAppear {
+                        startCountdown()
+                    }
+
+                // point value hints
+                VStack(spacing: 12) {
+                    HStack(spacing: 15) {
+                        Circle().fill(Color.red).frame(width: 20, height: 20)
+                        Text("Red: 1 point").foregroundColor(.white)
+                    }
+
+                    HStack(spacing: 15) {
+                        Circle().fill(Color(red: 1.0, green: 0.5, blue: 0.7)).frame(width: 20, height: 20)
+                        Text("Pink: 2 points").foregroundColor(.white)
+                    }
+
+                    HStack(spacing: 15) {
+                        Circle().fill(Color.green).frame(width: 20, height: 20)
+                        Text("Green: 5 points").foregroundColor(.white)
+                    }
+
+                    HStack(spacing: 15) {
+                        Circle().fill(Color.blue).frame(width: 20, height: 20)
+                        Text("Blue: 8 points").foregroundColor(.white)
+                    }
+
+                    HStack(spacing: 15) {
+                        Circle().fill(Color.black).frame(width: 20, height: 20)
+                        Text("Black: 10 points").foregroundColor(.white)
+                    }
+
+                    Divider().background(Color.white)
+
+                    Text("Colour Streak: 1.5x points")
+                        .foregroundColor(.yellow)
+                        .font(.headline)
                 }
+                .frame(maxWidth: .infinity, alignment: .center)
+                .multilineTextAlignment(.center)
+                .padding()
+                .background(Color.white.opacity(0.1))
+                .cornerRadius(20)
+                .padding(.horizontal, 40)
+
+                Spacer()
+            }
         }
         .navigationBarBackButtonHidden(true)
     }

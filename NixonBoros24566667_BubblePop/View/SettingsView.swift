@@ -40,8 +40,8 @@ struct SettingsView: View {
                 .transition(.opacity)
             }
             else {
-                // background gradient
-                LinearGradient(gradient: Gradient(colors: [Color.purple, Color.blue]),
+                // bg gradient
+                LinearGradient(gradient: Gradient(colors: [Color.black, Color.blue.opacity(0.8)]),
                                startPoint: .topLeading,
                                endPoint: .bottomTrailing)
                     .ignoresSafeArea()
@@ -94,7 +94,7 @@ struct SettingsView: View {
                         }) {
                             Text("Reset to Default")
                                 .font(.subheadline)
-                                .foregroundColor(isModified ? .yellow : .gray)
+                                .foregroundColor(isModified ? .white : .gray)
                         }
                         .disabled(!isModified)
                     }
@@ -125,6 +125,5 @@ struct SettingsView: View {
         }
         .animation(.easeInOut, value: showCountdown)
         .animation(.easeInOut, value: showGameView)
-        .navigationBarBackButtonHidden(true)
     }
 }
