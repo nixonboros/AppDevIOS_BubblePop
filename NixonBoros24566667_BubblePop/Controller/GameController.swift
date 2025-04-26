@@ -115,7 +115,7 @@ class GameController: ObservableObject {
         let max = gameModel.maxBubbles
 
         // Decide how many to remove (random number)
-        let removeCount = Int.random(in: 0...min(currentCount, max / 2))
+        let removeCount = Int.random(in: 1...min(currentCount, max / 2))
         var newBubbles = bubbles
 
         if removeCount > 0 {
@@ -125,7 +125,7 @@ class GameController: ObservableObject {
 
         // Calculate how many new bubbles to add (without exceeding max)
         let availableSlots = max - newBubbles.count
-        let newCount = Int.random(in: 0...availableSlots)
+        let newCount = Int.random(in: 1...availableSlots)
         print("Bubbles Removed & Generated:", removeCount, "|", newCount)
 
         let radius: CGFloat = 40
