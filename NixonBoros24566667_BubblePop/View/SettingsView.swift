@@ -21,6 +21,7 @@ struct SettingsView: View {
 
     var body: some View {
         ZStack {
+            // bg gradient
             LinearGradient(gradient: Gradient(colors: [Color.purple, Color.blue]),
                            startPoint: .topLeading,
                            endPoint: .bottomTrailing)

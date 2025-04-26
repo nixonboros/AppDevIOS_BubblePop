@@ -32,6 +32,7 @@ struct GameView: View {
     var body: some View {
         NavigationStack {
             ZStack {
+                // bg gradient
                 LinearGradient(
                     gradient: Gradient(colors: [Color(.systemBlue).opacity(0.3), Color(.systemPurple).opacity(0.3)]),
                     startPoint: .topLeading,
@@ -50,7 +51,7 @@ struct GameView: View {
                         }
                 } else {
                     VStack(spacing: 20) {
-                        // Header info
+                        // header info
                         HStack {
                             VStack(alignment: .leading, spacing: 5) {
                                 Text("Player: \(playerName)")
@@ -83,7 +84,7 @@ struct GameView: View {
                             .background(Color.secondary)
                             .padding(.horizontal, 10)
 
-                        // Game Area
+                        // game area
                         GeometryReader { geometry in
                             ZStack {
                                 RoundedRectangle(cornerRadius: 20)
@@ -148,10 +149,10 @@ struct GameView: View {
         timer?.invalidate()
         timer = nil
         
-        // Game over
+        // game over
         isGameOver = true
         
-        // Update the player's high score
+        // update the player's high score
         ScoreManager.shared.updateScore(for: playerName, score: gameController.score)
     }
 }

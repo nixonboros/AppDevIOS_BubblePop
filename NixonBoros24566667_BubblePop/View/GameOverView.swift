@@ -17,6 +17,7 @@ struct GameOverView: View {
 
     var body: some View {
         ZStack {
+            // bg gradient
             LinearGradient(gradient: Gradient(colors: [Color.red.opacity(0.8), Color.orange]),
                            startPoint: .top,
                            endPoint: .bottomTrailing)

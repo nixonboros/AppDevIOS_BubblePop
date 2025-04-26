@@ -15,7 +15,7 @@ struct ContentView: View {
     var body: some View {
         NavigationStack {
             ZStack {
-                // Background gradient
+                // bg gradient
                 LinearGradient(gradient: Gradient(colors: [Color.blue, Color.purple.opacity(0.8)]),
                                startPoint: .topLeading,
                                endPoint: .bottomTrailing)
@@ -24,13 +24,13 @@ struct ContentView: View {
                 VStack(spacing: 30) {
                     Spacer()
 
-                    // Game Title
+                    // game title
                     Text("Bubble Pop")
                         .font(.system(size: 44, weight: .heavy, design: .rounded))
                         .foregroundStyle(.white)
                         .shadow(color: .black.opacity(0.3), radius: 3, x: 0, y: 2)
 
-                    // Name Input
+                    // name input
                     TextField("Enter your name", text: $gameController.gameModel.playerName)
                         .padding()
                         .background(.white.opacity(0.2))
@@ -41,7 +41,7 @@ struct ContentView: View {
                         .padding(.horizontal, 40)
                         .shadow(radius: 5)
 
-                    // New Game Button
+                    // new game button
                     Button(action: {
                         withAnimation(.easeInOut(duration: 0.4)) {
                             gameController.updatePlayerName(newName: gameController.gameModel.playerName)
@@ -61,13 +61,13 @@ struct ContentView: View {
                     .disabled(gameController.gameModel.playerName.isEmpty)
                     .padding(.horizontal, 40)
 
-                    // NavigationLink to SettingsView (hidden)
+                    // navigationlink to settingsview (hidden)
                     NavigationLink(destination: SettingsView(gameController: gameController),
                                    isActive: $showSettings) {
                         EmptyView()
                     }
 
-                    // Leaderboard button
+                    // leaderboard button
                     NavigationLink(destination: LeaderboardView()) {
                         VStack(spacing: 8) {
                             Image(systemName: "trophy.fill")

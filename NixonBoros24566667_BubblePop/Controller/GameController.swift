@@ -90,13 +90,13 @@ class GameController: ObservableObject {
         let finalScore: Int
         
         if let previousColor = previousBubbleColor, previousColor == bubble.color {
-            // Apply multiplier for consecutive bubbles
+            // apply 1.5x multiplier for consecutive bubbles
             finalScore = Int((Double(baseScore) * 1.5).rounded())
         } else {
             finalScore = baseScore
         }
 
-        // Update score
+        // update score
         print("Score:", "+\(finalScore)")
         score += finalScore
         previousBubbleColor = bubble.color
@@ -106,7 +106,7 @@ class GameController: ObservableObject {
             highScore = score  // Update high score
         }
         
-        // Remove the bubble
+        // remove the bubble
         bubbles.removeAll { $0.id == bubble.id }
     }
     
@@ -114,7 +114,7 @@ class GameController: ObservableObject {
         let currentCount = bubbles.count
         let max = gameModel.maxBubbles
 
-        // Decide how many to remove (random number)
+        // decide how many to remove (random number)
         let removeCount = Int.random(in: 1...min(currentCount, max / 2))
         var newBubbles = bubbles
 
@@ -123,7 +123,7 @@ class GameController: ObservableObject {
             newBubbles.removeLast(removeCount)
         }
 
-        // Calculate how many new bubbles to add (without exceeding max)
+        // calculate how many new bubbles to add (without exceeding max)
         let availableSlots = max - newBubbles.count
         let newCount = Int.random(in: 1...availableSlots)
         print("Bubbles Removed & Generated:", removeCount, "|", newCount)
@@ -152,7 +152,7 @@ class GameController: ObservableObject {
     }
 
     
-    // game Settings Update Functions
+    // game settings update funcs
     func updatePlayerName(newName: String) {
         gameModel.playerName = newName
     }

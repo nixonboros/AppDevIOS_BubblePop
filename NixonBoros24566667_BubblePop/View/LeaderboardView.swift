@@ -12,6 +12,7 @@ struct LeaderboardView: View {
 
     var body: some View {
         ZStack {
+            // bg gradient
             LinearGradient(gradient: Gradient(colors: [Color.indigo, Color.cyan]),
                            startPoint: .top,
                            endPoint: .bottomTrailing)
