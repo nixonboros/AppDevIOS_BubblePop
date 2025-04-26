@@ -5,60 +5,55 @@
 //  Created by Nixon Boros on 22/4/2025.
 //
 
-//
-//  LeaderboardView.swift
-//  NixonBoros24566667_BubblePop
-//
-//  Created by Nixon Boros on 22/4/2025.
-//
-
 import SwiftUI
 
 struct LeaderboardView: View {
-    // Fetch the scores from ScoreManager
     let scores = ScoreManager.shared.getAllScores()
 
     var body: some View {
         ZStack {
-            Rectangle()
-                .fill(Color(.systemGroupedBackground))
+            LinearGradient(gradient: Gradient(colors: [Color.indigo, Color.cyan]),
+                           startPoint: .top,
+                           endPoint: .bottomTrailing)
                 .ignoresSafeArea()
 
-            VStack {
-                Text("Leaderboard")
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
-                    .foregroundColor(.primary)
+            VStack(spacing: 20) {
+                Text("🏆 Leaderboard")
+                    .font(.system(size: 36, weight: .bold, design: .rounded))
+                    .foregroundColor(.white)
+                    .shadow(radius: 5)
 
-                // display leaderboard
                 ScrollView {
-                    VStack(alignment: .leading, spacing: 10) {
-                        ForEach(scores.sorted(by: { $0.value > $1.value }), id: \.key) { player, score in
+                    VStack(spacing: 15) {
+                        ForEach(Array(scores.sorted(by: { $0.value > $1.value }).enumerated()), id: \.element.key) { index, entry in
                             HStack {
-                                Text(player)
+                                Text("#\(index + 1)")
+                                    .font(.title3.bold())
+                                    .foregroundColor(.yellow)
+
+                                Text(entry.key)
                                     .font(.headline)
-                                    .foregroundColor(.primary)
+                                    .foregroundColor(.white)
 
                                 Spacer()
 
-                                Text("\(score)")
-                                    .font(.title)
-                                    .fontWeight(.bold)
-                                    .foregroundColor(.blue)
+                                Text("\(entry.value)")
+                                    .font(.title2.bold())
+                                    .foregroundColor(.green)
                             }
-                            .padding(.horizontal, 20)
-                            .padding(.vertical, 10)
-                            .background(Color.white)
-                            .cornerRadius(10)
-                            .shadow(radius: 1)
+                            .padding()
+                            .background(Color.white.opacity(0.15))
+                            .cornerRadius(15)
+                            .shadow(radius: 3)
+                            .transition(.move(edge: .bottom).combined(with: .opacity))
                         }
                     }
-                    .padding(.bottom, 40)
+                    .padding(.horizontal, 20)
                 }
 
                 Spacer()
             }
-            .padding(.horizontal, 20)
+            .padding(.top, 30)
         }
     }
 }

@@ -10,68 +10,68 @@ import SwiftUI
 struct GameOverView: View {
     let playerName: String
     let finalScore: Int
+
     var highScore: Int {
         ScoreManager.shared.getHighScore(for: playerName)
     }
-    
+
     var body: some View {
         ZStack {
-            Rectangle()
-                .fill(Color(.systemGroupedBackground))
+            LinearGradient(gradient: Gradient(colors: [Color.red.opacity(0.8), Color.orange]),
+                           startPoint: .top,
+                           endPoint: .bottomTrailing)
                 .ignoresSafeArea()
-            
-            VStack {
-                Spacer()
-                
-                Text("Game Over")
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
-                    .foregroundColor(.primary)
-                    .shadow(radius: 2)
 
-                VStack(spacing: 10) {
+            VStack(spacing: 30) {
+                Spacer()
+
+                Text("Game Over")
+                    .font(.system(size: 40, weight: .bold, design: .rounded))
+                    .foregroundColor(.white)
+                    .shadow(radius: 5)
+
+                VStack(spacing: 12) {
                     Text("Player: \(playerName)")
                         .font(.headline)
-                        .foregroundColor(.primary)
+                        .foregroundColor(.white)
 
                     Text("Final Score: \(finalScore)")
                         .font(.title)
-                        .fontWeight(.semibold)
-                        .foregroundColor(.green)
-                        .shadow(radius: 1)
+                        .fontWeight(.bold)
+                        .foregroundColor(.yellow)
+                        .shadow(radius: 2)
                 }
                 .padding(.horizontal, 40)
-                
+
                 Divider()
-                    .background(Color.secondary)
-                    .padding(.horizontal, 40)
+                    .background(Color.white.opacity(0.5))
+                    .padding(.horizontal, 60)
 
                 VStack(spacing: 10) {
-                    Text("High Score:")
-                        .font(.headline)
-                        .foregroundColor(.secondary)
+                    Text("High Score")
+                        .font(.subheadline)
+                        .foregroundColor(.white.opacity(0.8))
 
                     Text("\(highScore)")
                         .font(.title)
-                        .fontWeight(.bold)
-                        .foregroundColor(.blue)
-                        .shadow(radius: 1)
+                        .fontWeight(.semibold)
+                        .foregroundColor(.white)
+                        .shadow(radius: 2)
                 }
-                .padding(.horizontal, 40)
 
-                Spacer() // Push the "Back to Menu" button to the bottom
+                Spacer()
 
                 NavigationLink(destination: ContentView(gameController: GameController(gameModel: GameModel()))) {
                     Text("Back to Menu")
                         .font(.headline)
                         .frame(maxWidth: .infinity)
                         .padding()
-                        .background(Color.green)
+                        .background(Color.white.opacity(0.2))
                         .foregroundColor(.white)
-                        .cornerRadius(20)
-                        .shadow(radius: 5)
+                        .cornerRadius(25)
+                        .shadow(radius: 4)
                         .padding(.horizontal, 40)
-                        .padding(.bottom, 20)
+                        .padding(.bottom, 30)
                         .navigationBarBackButtonHidden(true)
                 }
             }
@@ -79,3 +79,5 @@ struct GameOverView: View {
         }
     }
 }
+
+

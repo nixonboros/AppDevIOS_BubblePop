@@ -16,10 +16,10 @@ struct GameView: View {
     @State private var timeLeft: Int
     @State private var timer: Timer? = nil
     @State private var isGameOver: Bool = false
-    
+
     @State private var fadeIn: Bool = false
     @State private var fadeOut: Bool = false
-    
+
     init(playerName: String, gameTime: Int, maxBubbles: Int) {
         self.playerName = playerName
         self.maxBubbles = maxBubbles
@@ -32,13 +32,16 @@ struct GameView: View {
     var body: some View {
         NavigationStack {
             ZStack {
-                Rectangle()
-                    .fill(Color(.systemGroupedBackground))
-                    .ignoresSafeArea()
-                
+                LinearGradient(
+                    gradient: Gradient(colors: [Color(.systemBlue).opacity(0.3), Color(.systemPurple).opacity(0.3)]),
+                    startPoint: .topLeading,
+                    endPoint: .bottomTrailing
+                )
+                .ignoresSafeArea()
+
                 if isGameOver {
                     GameOverView(playerName: playerName, finalScore: gameController.score)
-                        // fade into next scene
+                        // fade into gameover scene anim
                         .opacity(fadeIn ? 1 : 0)
                         .onAppear {
                             withAnimation(.easeIn(duration: 1.0)) {
@@ -53,19 +56,21 @@ struct GameView: View {
                                 Text("Player: \(playerName)")
                                     .font(.headline)
                                     .foregroundColor(.primary)
-                                
+                                    .shadow(radius: 1)
+
                                 Text("Time Left: \(timeLeft)")
                                     .font(.subheadline)
                                     .foregroundColor(.secondary)
                             }
-                            
+
                             Spacer()
-                            
+
                             VStack(alignment: .trailing, spacing: 5) {
                                 Text("Score: \(gameController.score)")
                                     .font(.headline)
                                     .foregroundColor(.primary)
-                                
+                                    .shadow(radius: 1)
+
                                 Text("High Score: \(gameController.highScore)")
                                     .font(.subheadline)
                                     .foregroundColor(.secondary)
@@ -73,33 +78,32 @@ struct GameView: View {
                         }
                         .padding(.horizontal, 20)
                         .padding(.top, 40)
-                        
+
                         Divider()
                             .background(Color.secondary)
                             .padding(.horizontal, 10)
-                        
+
                         // Game Area
                         GeometryReader { geometry in
                             ZStack {
-                                Rectangle()
-                                    .fill(Color.gray.opacity(0.2))
+                                RoundedRectangle(cornerRadius: 20)
+                                    .fill(Color.white.opacity(0.3))
                                     .padding(.horizontal, 10)
-                                    .cornerRadius(20)
-                                
+
                                 ForEach(gameController.bubbles) { bubble in
                                     Circle()
                                         .fill(bubble.color.color)
                                         .frame(width: 80, height: 80)
                                         .position(bubble.position)
+                                        .shadow(radius: 5)
                                         .onTapGesture {
                                             print("Popped \(bubble.color)")
-                                            
                                             gameController.popBubble(bubble: bubble)
                                         }
                                 }
                             }
                             .onAppear {
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { // delays bubble generation by 0.1s to avoid swiftui not loading in before bubbles
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                                     gameController.generateBubbles(in: geometry.size)
                                 }
                             }
@@ -109,7 +113,7 @@ struct GameView: View {
                             }
                         }
                     }
-                    // fade out anim
+                    // fade out anim when timer hits 0
                     .opacity(fadeOut ? 0 : 1)
                     .onChange(of: timeLeft) { newTimeLeft in
                         if newTimeLeft == 0 {
@@ -124,7 +128,7 @@ struct GameView: View {
                 startTimer()
             }
             .onDisappear { // as gameview closes
-                stopTimer()
+                stopTimer() // saves/updates score to highscores.json
             }
             .navigationBarBackButtonHidden(true)
         }
@@ -156,8 +160,7 @@ struct GameView: View {
 
 // TO DO LIST (ignore):
 
-// show highscore during gameplay
-
+// add go to leaderboard/back to menu for GameOver screen
 // 3,2,1 countdown (point values, hints)
 // animations when popping/generating bubbles
 // score changes/combo length display with animations in response to taps

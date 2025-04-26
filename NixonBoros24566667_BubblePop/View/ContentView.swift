@@ -11,69 +11,86 @@ struct ContentView: View {
     @ObservedObject var gameController: GameController
     @State private var showSettings = false
     @State private var showLeaderboard = false
-
+    
     var body: some View {
         NavigationStack {
             ZStack {
-                Rectangle()
-                    .fill(Color(.systemGroupedBackground))
+                // Background gradient
+                LinearGradient(gradient: Gradient(colors: [Color.blue, Color.purple.opacity(0.8)]),
+                               startPoint: .topLeading,
+                               endPoint: .bottomTrailing)
                     .ignoresSafeArea()
-                
-                VStack(spacing: 10) {
+
+                VStack(spacing: 30) {
                     Spacer()
 
+                    // Game Title
                     Text("Bubble Pop")
-                        .font(.largeTitle)
-                        .fontWeight(.bold)
-                        .padding(.bottom, 10)
+                        .font(.system(size: 44, weight: .heavy, design: .rounded))
+                        .foregroundStyle(.white)
+                        .shadow(color: .black.opacity(0.3), radius: 3, x: 0, y: 2)
 
-                    TextField("Enter Name", text: $gameController.gameModel.playerName)
+                    // Name Input
+                    TextField("Enter your name", text: $gameController.gameModel.playerName)
                         .padding()
-                        .background(Color.gray.opacity(0.2))
-                        .cornerRadius(20)
+                        .background(.white.opacity(0.2))
+                        .foregroundColor(.white)
+                        .font(.title2.bold())
+                        .cornerRadius(30)
+                        .overlay(RoundedRectangle(cornerRadius: 30).stroke(.white.opacity(0.4), lineWidth: 1))
                         .padding(.horizontal, 40)
-                        .font(.headline)
-                        .shadow(radius: 2)
+                        .shadow(radius: 5)
 
-                    NavigationLink(destination: SettingsView(gameController: gameController), isActive: $showSettings) {
-                    }
-
+                    // New Game Button
                     Button(action: {
-                        withAnimation(.easeInOut(duration: 0.3)) {
+                        withAnimation(.easeInOut(duration: 0.4)) {
                             gameController.updatePlayerName(newName: gameController.gameModel.playerName)
                             showSettings = true
                         }
                     }) {
                         Text("New Game")
-                            .font(.headline)
+                            .font(.system(size: 20, weight: .bold, design: .rounded))
                             .frame(maxWidth: .infinity)
                             .padding()
-                            .background(gameController.gameModel.playerName.isEmpty ? Color.gray.opacity(0.5) : Color.green)
+                            .background(gameController.gameModel.playerName.isEmpty ? Color.gray : Color.green)
                             .foregroundColor(.white)
-                            .cornerRadius(20)
-                            .shadow(radius: 5)
-                            .padding(.horizontal, 40)
+                            .cornerRadius(25)
+                            .shadow(color: .black.opacity(0.3), radius: 5, x: 0, y: 4)
+                            .scaleEffect(gameController.gameModel.playerName.isEmpty ? 1.0 : 1.05)
                     }
                     .disabled(gameController.gameModel.playerName.isEmpty)
-                    .animation(.easeInOut(duration: 0.3), value: gameController.gameModel.playerName)
+                    .padding(.horizontal, 40)
 
-                    // Leaderboard icon centered under button
-                    NavigationLink(destination: LeaderboardView()) {
-                        Image(systemName: "trophy.fill")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 30, height: 30)
-                            .foregroundColor(.white)
-                            .padding(12)
-                            .background(Color.yellow)
-                            .clipShape(Circle())
-                            .shadow(radius: 5)
-                            .navigationBarBackButtonHidden(true)
+                    // NavigationLink to SettingsView (hidden)
+                    NavigationLink(destination: SettingsView(gameController: gameController),
+                                   isActive: $showSettings) {
+                        EmptyView()
                     }
-                    .padding(.top, 20)
+
+                    // Leaderboard button
+                    NavigationLink(destination: LeaderboardView()) {
+                        VStack(spacing: 8) {
+                            Image(systemName: "trophy.fill")
+                                .resizable()
+                                .frame(width: 35, height: 35)
+                                .foregroundColor(.yellow)
+                                .padding(15)
+                                .background(.ultraThinMaterial)
+                                .clipShape(Circle())
+                                .shadow(radius: 10)
+
+                            Text("Leaderboard")
+                                .font(.caption)
+                                .foregroundColor(.white)
+                        }
+                        .padding(.top, 30)
+                        .scaleEffect(1.1)
+                    }
 
                     Spacer()
                 }
+                .padding(.bottom, 30)
+                .transition(.opacity.combined(with: .move(edge: .bottom)))
             }
         }
     }

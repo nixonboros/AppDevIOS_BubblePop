@@ -10,7 +10,7 @@ import SwiftUI
 struct SettingsView: View {
     @ObservedObject var gameController: GameController
     @State private var startGame = false
-    
+
     let defaultGameTime = 60
     let defaultMaxBubbles = 15
 
@@ -21,55 +21,62 @@ struct SettingsView: View {
 
     var body: some View {
         ZStack {
-            Rectangle()
-                .fill(Color(.systemGroupedBackground))
+            LinearGradient(gradient: Gradient(colors: [Color.purple, Color.blue]),
+                           startPoint: .topLeading,
+                           endPoint: .bottomTrailing)
                 .ignoresSafeArea()
 
-            VStack(spacing: 20) {
+            VStack(spacing: 30) {
                 Spacer()
 
-                Text("Game Settings")
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
-                    .padding(.bottom, 20)
+                Text("⚙️ Game Settings")
+                    .font(.system(size: 36, weight: .bold, design: .rounded))
+                    .foregroundColor(.white)
+                    .shadow(radius: 4)
 
-                Stepper(value: $gameController.gameModel.gameTime, in: 10...300, step: 10) {
-                    Text("Game Time: \(gameController.gameModel.gameTime) sec")
-                        .font(.headline)
+                VStack(spacing: 20) {
+                    Stepper(value: $gameController.gameModel.gameTime, in: 10...300, step: 10) {
+                        Text("Game Time: \(gameController.gameModel.gameTime) sec")
+                            .font(.headline)
+                            .foregroundColor(.white)
+                    }
+                    .onChange(of: gameController.gameModel.gameTime) { newValue in
+                        gameController.updateGameTime(gameTime: newValue)
+                    }
+                    .padding()
+                    .frame(maxWidth: .infinity)
+                    .background(.white.opacity(0.15))
+                    .cornerRadius(20)
+                    .overlay(RoundedRectangle(cornerRadius: 20).stroke(.white.opacity(0.3)))
+                    .shadow(radius: 4)
+
+                    Stepper(value: $gameController.gameModel.maxBubbles, in: 1...15) {
+                        Text("Max Bubbles: \(gameController.gameModel.maxBubbles)")
+                            .font(.headline)
+                            .foregroundColor(.white)
+                    }
+                    .onChange(of: gameController.gameModel.maxBubbles) { newValue in
+                        gameController.updateMaxBubbles(maxBubbles: newValue)
+                    }
+                    .padding()
+                    .frame(maxWidth: .infinity)
+                    .background(.white.opacity(0.15))
+                    .cornerRadius(20)
+                    .overlay(RoundedRectangle(cornerRadius: 20).stroke(.white.opacity(0.3)))
+                    .shadow(radius: 4)
+
+                    Button(action: {
+                        gameController.updateGameTime(gameTime: defaultGameTime)
+                        gameController.updateMaxBubbles(maxBubbles: defaultMaxBubbles)
+                        gameController.objectWillChange.send()
+                    }) {
+                        Text("Reset to Default")
+                            .font(.subheadline)
+                            .foregroundColor(isModified ? .yellow : .gray)
+                    }
+                    .disabled(!isModified)
                 }
-                .onChange(of: gameController.gameModel.gameTime) { newValue in
-                    gameController.updateGameTime(gameTime: newValue)
-                }
-                .padding()
-                .background(Color.gray.opacity(0.2))
-                .cornerRadius(20)
                 .padding(.horizontal, 40)
-                .shadow(radius: 2)
-
-                Stepper(value: $gameController.gameModel.maxBubbles, in: 1...15) {
-                    Text("Max Bubbles: \(gameController.gameModel.maxBubbles)")
-                        .font(.headline)
-                }
-                .onChange(of: gameController.gameModel.maxBubbles) { newValue in
-                    gameController.updateMaxBubbles(maxBubbles: newValue)
-                }
-                .padding()
-                .background(Color.gray.opacity(0.2))
-                .cornerRadius(20)
-                .padding(.horizontal, 40)
-                .shadow(radius: 2)
-
-                Button(action: {
-                    gameController.updateGameTime(gameTime: defaultGameTime)
-                    gameController.updateMaxBubbles(maxBubbles: defaultMaxBubbles)
-                    gameController.objectWillChange.send()
-                }) {
-                    Text("Reset to Default")
-                        .font(.subheadline)
-                        .foregroundColor(isModified ? .blue : .gray)
-                }
-                .padding(.top, 10)
-                .disabled(!isModified)
 
                 NavigationLink(
                     destination: GameView(
@@ -83,7 +90,9 @@ struct SettingsView: View {
                 }
 
                 Button(action: {
-                    startGame = true
+                    withAnimation {
+                        startGame = true
+                    }
                 }) {
                     Text("Start Game")
                         .font(.headline)
@@ -91,8 +100,8 @@ struct SettingsView: View {
                         .padding()
                         .background(Color.green)
                         .foregroundColor(.white)
-                        .cornerRadius(20)
-                        .shadow(radius: 5)
+                        .cornerRadius(25)
+                        .shadow(radius: 6)
                         .padding(.horizontal, 40)
                 }
 
