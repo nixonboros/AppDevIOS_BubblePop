@@ -2,7 +2,7 @@
 //  GameOverView.swift
 //  NixonBoros24566667_BubblePop
 //
-//  Created by Monica Boros on 25/4/2025.
+//  Created by Nixon Boros on 25/4/2025.
 //
 
 import SwiftUI

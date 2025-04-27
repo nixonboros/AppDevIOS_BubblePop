@@ -2,7 +2,7 @@
 //  CountdownView.swift
 //  NixonBoros24566667_BubblePop
 //
-//  Created by Monica Boros on 26/4/2025.
+//  Created by Nixon Boros on 26/4/2025.
 //
 
 import SwiftUI
