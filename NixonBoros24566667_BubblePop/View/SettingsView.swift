@@ -107,14 +107,18 @@ struct SettingsView: View {
                             showCountdown = true
                         }
                     }) {
-                        Text("Start Game")
-                            .font(.headline)
-                            .frame(maxWidth: .infinity)
-                            .padding()
-                            .background(Color.green)
-                            .foregroundColor(.white)
-                            .cornerRadius(25)
-                            .shadow(color: .black.opacity(0.3), radius: 5, x: 0, y: 4)
+                        HStack {
+                            Image(systemName: "play.fill")
+                                .font(.system(size: 28, weight: .bold))
+                            Text("Start Game")
+                                .font(.headline)
+                        }
+                        .frame(maxWidth: .infinity)
+                        .padding()
+                        .background(Color.green)
+                        .foregroundColor(.white)
+                        .cornerRadius(25)
+                        .shadow(radius: 5)
                     }
                     .padding(.horizontal, 40)
 

@@ -101,49 +101,62 @@ struct GameOverView: View {
                             showCountdown = true
                         }
                     }) {
-                        Image(systemName: "gobackward")
-                            .font(.system(size: 28, weight: .bold))
-                            .padding()
-                            .background(Color.white.opacity(0.2))
-                            .foregroundColor(.white)
-                            .clipShape(Circle())
-                            .shadow(radius: 5)
-                            .padding(.bottom, 10)
+                        HStack {
+                            Image(systemName: "gobackward")
+                                .font(.system(size: 28, weight: .bold))
+                            Text("Retry")
+                                .font(.headline)
+                        }
+                        .frame(maxWidth: .infinity, maxHeight: 25)
+                        .padding()
+                        .background(Color.white.opacity(0.2))
+                        .foregroundColor(.white)
+                        .cornerRadius(25)
+                        .shadow(radius: 5)
+                        .padding(.horizontal, 40)
+                        .padding(.bottom, 10)
                     }
-                    .padding(.horizontal, 40)
 
-                    // back to Menu Button
+                    // back to menu button
                     Button(action: {
                         withAnimation {
                             goToMenu = true
                         }
                     }) {
-                        Text("Back to Menu")
-                            .font(.headline)
-                            .frame(maxWidth: .infinity)
-                            .padding()
-                            .background(Color.white.opacity(0.2))
-                            .foregroundColor(.white)
-                            .cornerRadius(25)
-                            .shadow(radius: 4)
-                            .padding(.horizontal, 40)
-                            .padding(.bottom, 10)
+                        HStack {
+                            Image(systemName: "house.fill")
+                                .font(.system(size: 28, weight: .bold))
+                            Text("Back to Menu")
+                                .font(.headline)
+                        }
+                        .frame(maxWidth: .infinity, maxHeight: 25)
+                        .padding()
+                        .background(Color.white.opacity(0.2))
+                        .foregroundColor(.white)
+                        .cornerRadius(25)
+                        .shadow(radius: 5)
+                        .padding(.horizontal, 40)
+                        .padding(.bottom, 10)
                     }
 
-                    // view Leaderboard Button
+                    // view leaderboard button
                     Button(action: {
                         showLeaderboard = true
                     }) {
-                        Text("View Leaderboard")
-                            .font(.headline)
-                            .frame(maxWidth: .infinity)
-                            .padding()
-                            .background(Color.white.opacity(0.2))
-                            .foregroundColor(.white)
-                            .cornerRadius(25)
-                            .shadow(radius: 4)
-                            .padding(.horizontal, 40)
-                            .padding(.bottom, 30)
+                        HStack {
+                            Image(systemName: "list.dash")
+                                .font(.system(size: 28, weight: .bold))
+                            Text("View Leaderboard")
+                                .font(.headline)
+                        }
+                        .frame(maxWidth: .infinity, maxHeight: 25)
+                        .padding()
+                        .background(Color.white.opacity(0.2))
+                        .foregroundColor(.white)
+                        .cornerRadius(25)
+                        .shadow(radius: 5)
+                        .padding(.horizontal, 40)
+                        .padding(.bottom, 30)
                     }
                     .sheet(isPresented: $showLeaderboard) {
                         LeaderboardView()

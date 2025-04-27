@@ -55,19 +55,25 @@ struct ContentView: View {
                         gameController.updatePlayerName(newName: gameController.gameModel.playerName)
                         showSettings = true
                     }) {
-                        Text("New Game")
-                            .font(.system(size: 20, weight: .bold, design: .rounded))
-                            .frame(maxWidth: .infinity)
-                            .padding()
-                            .background(gameController.gameModel.playerName.isEmpty ? Color.gray : Color.green)
-                            .foregroundColor(.white)
-                            .cornerRadius(25)
-                            .shadow(color: .black.opacity(0.3), radius: 5, x: 0, y: 4)
-                            .scaleEffect(gameController.gameModel.playerName.isEmpty ? 1.0 : 1.03)
-                            .animation(.easeInOut(duration: 0.4), value: gameController.gameModel.playerName.isEmpty)
+                        HStack {
+                            Image(systemName: "play.fill")
+                                .font(.system(size: 28, weight: .bold))
+                            Text("New Game")
+                                .font(.headline)
+                        }
+                        .frame(maxWidth: .infinity)
+                        .padding()
+                        .background(gameController.gameModel.playerName.isEmpty ? Color.gray : Color.green)
+                        .foregroundColor(.white)
+                        .cornerRadius(25)
+                        .shadow(radius: 5)
+                        .padding(.horizontal, 40)
+                        .padding(.bottom, 10)
                     }
                     .disabled(gameController.gameModel.playerName.isEmpty)
-                    .padding(.horizontal, 40)
+                    // scale and fade anim on buttton
+                    .scaleEffect(gameController.gameModel.playerName.isEmpty ? 1.0 : 1.05)
+                    .animation(.easeInOut(duration: 0.4), value: gameController.gameModel.playerName.isEmpty)
 
                     // navigationlink to settingsview
                     NavigationLink(destination: SettingsView(gameController: gameController),
@@ -78,22 +84,20 @@ struct ContentView: View {
                     Button(action: {
                         showLeaderboard = true
                     }) {
-                        VStack(spacing: 8) {
+                        HStack {
                             Image(systemName: "trophy.fill")
-                                .resizable()
-                                .frame(width: 35, height: 35)
-                                .foregroundColor(.yellow)
-                                .padding(15)
-                                .background(.ultraThinMaterial)
-                                .clipShape(Circle())
-                                .shadow(radius: 10)
-
+                                .font(.system(size: 28, weight: .bold))
                             Text("Leaderboard")
-                                .font(.caption)
-                                .foregroundColor(.white)
+                                .font(.headline)
                         }
-                        .padding(.top, 30)
-                        .scaleEffect(1.1)
+                        .frame(maxWidth: .infinity)
+                        .padding()
+                        .background(Color.white.opacity(0.2))
+                        .foregroundColor(.white)
+                        .cornerRadius(25)
+                        .shadow(radius: 5)
+                        .padding(.horizontal, 40)
+                        .padding(.bottom, 10)
                     }
                     .sheet(isPresented: $showLeaderboard) {
                         LeaderboardView()
