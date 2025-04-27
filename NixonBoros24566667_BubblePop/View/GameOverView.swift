@@ -8,13 +8,15 @@
 import SwiftUI
 
 struct GameOverView: View {
-    @State private var showLeaderboard = false
-    @State private var goToMenu = false
-    @State private var showCountdown = false
     @State private var showGameView = false
+    @State private var showCountdown = false
+    @State private var goToMenu = false
+    @State private var showLeaderboard = false
     
     let playerName: String
     let finalScore: Int
+    let gameTime: Int
+    let maxBubbles: Int
 
     var highScore: Int {
         ScoreManager.shared.getHighScore()
@@ -26,8 +28,8 @@ struct GameOverView: View {
                 // after countdown finishes, start game
                 GameView(
                     playerName: playerName,
-                    gameTime: 10,
-                    maxBubbles: 15
+                    gameTime: gameTime,
+                    maxBubbles: maxBubbles
                 )
                 .transition(.opacity)
             }

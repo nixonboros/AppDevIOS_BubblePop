@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SettingsView: View {
     @ObservedObject var gameController: GameController
+    
     @State private var showCountdown = false
     @State private var showGameView = false
 

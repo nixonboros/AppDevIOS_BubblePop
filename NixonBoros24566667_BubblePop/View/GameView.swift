@@ -35,7 +35,12 @@ struct GameView: View {
         NavigationStack {
             ZStack {
                 if isGameOver {
-                    GameOverView(playerName: playerName, finalScore: gameController.score)
+                    GameOverView(
+                        playerName: playerName,
+                        finalScore: gameController.score,
+                        gameTime: gameController.gameModel.gameTime,
+                        maxBubbles: gameController.gameModel.maxBubbles
+                    )
                         .opacity(fadeIn ? 1 : 0)
                         .onAppear {
                             withAnimation(.easeIn(duration: 1.0)) {
