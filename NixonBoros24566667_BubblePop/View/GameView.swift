@@ -133,11 +133,16 @@ struct GameView: View {
                                         .font(.title)
                                         .foregroundColor(.black)
                                         .bold()
+                                        .shadow(color: .black.opacity(0.7), radius: 3, x: 1, y: 1)
                                         .position(overlay.position)
-                                        .opacity(fadeOut ? 0 : 1)
+                                        .opacity(overlay.opacity) // bind opacity here
                                         .onAppear {
-                                            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                                                // remove point overlay after delay
+                                            withAnimation(.easeOut(duration: 0.5)) {
+                                                if let index = gameController.pointOverlays.firstIndex(where: { $0.position == overlay.position }) {
+                                                    gameController.pointOverlays[index].opacity = 0 // animate to 0 opacity
+                                                }
+                                            }
+                                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                                                 if let index = gameController.pointOverlays.firstIndex(where: { $0.position == overlay.position }) {
                                                     gameController.pointOverlays.remove(at: index)
                                                 }

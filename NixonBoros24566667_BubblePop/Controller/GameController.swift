@@ -12,7 +12,7 @@ class GameController: ObservableObject {
     @Published var gameModel: GameModel
     @Published var bubbles: [BubbleModel.Bubble] = []
     
-    @Published var pointOverlays: [(position: CGPoint, points: Int)] = []
+    @Published var pointOverlays: [(position: CGPoint, points: Int, opacity: Double)] = []
     
     private var timer: Timer? = nil
     private var previousBubbleColor: BubbleModel.BubbleColour? = nil
@@ -110,7 +110,7 @@ class GameController: ObservableObject {
         }
         
         // add to point overlay
-        pointOverlays.append((position: bubble.position, points: finalScore))
+        pointOverlays.append((position: bubble.position, points: finalScore, opacity: 1.0))
         
         // remove the bubble
         bubbles.removeAll { $0.id == bubble.id }

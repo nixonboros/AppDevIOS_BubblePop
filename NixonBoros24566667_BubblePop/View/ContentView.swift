@@ -112,7 +112,3 @@ struct ContentView: View {
 #Preview {
     ContentView(gameController: GameController(gameModel: GameModel()))
 }
-
-// TO DO LIST (ignore):
-
-// score changes/combo length display with animations in response to taps
