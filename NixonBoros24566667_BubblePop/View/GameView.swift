@@ -127,9 +127,7 @@ struct GameView: View {
                                         .font(.title)
                                         .foregroundColor(.black)
                                         .bold()
-                                        .opacity(gameController.pointsOpacity)
                                         .position(tappedBubble.position)
-                                        .animation(.easeOut(duration: 0.8), value: gameController.pointsOpacity)
                                 }
                             }
                             .onAppear {

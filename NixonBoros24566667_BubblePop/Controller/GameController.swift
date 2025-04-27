@@ -159,11 +159,7 @@ class GameController: ObservableObject {
         tappedBubbleId = bubble.id
         pointsOpacity = 1.0
 
-        withAnimation(.easeOut(duration: 0.8)) {
-            pointsOpacity = 0.0
-        }
-
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             self.tappedBubbleId = nil // reset tapped bubble
             self.pointsOpacity = 1.0 // reset opacity for next point
         }
