@@ -17,6 +17,7 @@ struct GameView: View {
     @State private var timer: Timer? = nil
     @State private var isGameOver: Bool = false
     @State private var bubbleScales: [UUID: CGFloat] = [:]
+    @State private var isPressed: [UUID: Bool] = [:]
 
     @State private var fadeIn: Bool = false
     @State private var fadeOut: Bool = false
@@ -108,6 +109,12 @@ struct GameView: View {
                                             }
                                         }
                                         .onTapGesture {
+                                            // check if the bubble is pressed. If it is, do nothing (avoids taps while bubble pop animation is playing)
+                                                guard isPressed[bubble.id] == nil || isPressed[bubble.id] == false else { return }
+                                            
+                                            // mark the bubble as animating
+                                                isPressed[bubble.id] = true
+                                            
                                             // when tapped, shrink and then pop
                                             withAnimation(.easeIn(duration: 0.1)) {
                                                 bubbleScales[bubble.id] = 0.0
@@ -115,19 +122,27 @@ struct GameView: View {
                                             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                                                 gameController.popBubble(bubble: bubble)
                                                 bubbleScales.removeValue(forKey: bubble.id)
+                                                isPressed[bubble.id] = false
                                             }
-                                            gameController.showPointsOverlay(for: bubble)
                                         }
                                 }
 
                                 // display points gained when a bubble is tapped
-                                if let tappedBubbleId = gameController.tappedBubbleId,
-                                   let tappedBubble = gameController.bubbles.first(where: { $0.id == tappedBubbleId }) {
-                                    Text("+\(tappedBubble.color.pointValue)")
+                                ForEach(gameController.pointOverlays, id: \.position) { overlay in
+                                    Text("+\(overlay.points)")
                                         .font(.title)
                                         .foregroundColor(.black)
                                         .bold()
-                                        .position(tappedBubble.position)
+                                        .position(overlay.position)
+                                        .opacity(fadeOut ? 0 : 1)
+                                        .onAppear {
+                                            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                                                // remove point overlay after delay
+                                                if let index = gameController.pointOverlays.firstIndex(where: { $0.position == overlay.position }) {
+                                                    gameController.pointOverlays.remove(at: index)
+                                                }
+                                            }
+                                        }
                                 }
                             }
                             .onAppear {
