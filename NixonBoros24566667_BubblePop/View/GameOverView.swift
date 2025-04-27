@@ -10,6 +10,8 @@ import SwiftUI
 struct GameOverView: View {
     @State private var showLeaderboard = false
     @State private var goToMenu = false
+    @State private var showCountdown = false
+    @State private var showGameView = false
     
     let playerName: String
     let finalScore: Int
@@ -20,19 +22,41 @@ struct GameOverView: View {
 
     var body: some View {
         ZStack {
-            // bg gradient
-            LinearGradient(gradient: Gradient(colors: [Color.red.opacity(0.8), Color.orange]),
-                           startPoint: .top,
-                           endPoint: .bottomTrailing)
-                .ignoresSafeArea()
-            
-            if goToMenu {
+            if showGameView {
+                // after countdown finishes, start game
+                GameView(
+                    playerName: playerName,
+                    gameTime: 10,
+                    maxBubbles: 15
+                )
+                .transition(.opacity)
+            }
+            else if showCountdown {
+                // show countdown first
+                CountdownView {
+                    withAnimation {
+                        showCountdown = false
+                        showGameView = true
+                    }
+                }
+                .transition(.opacity)
+            }
+            else if goToMenu {
+                // back to menu
                 ContentView(gameController: GameController(gameModel: GameModel()))
                     .transition(.opacity)
-            } else {
+            }
+            else {
+                // background gradient
+                LinearGradient(gradient: Gradient(colors: [Color.red.opacity(0.8), Color.orange]),
+                               startPoint: .top,
+                               endPoint: .bottomTrailing)
+                    .ignoresSafeArea()
+                
+                // game over screen
                 VStack(spacing: 30) {
                     Spacer()
-
+                    
                     Text("Game Over")
                         .font(.system(size: 40, weight: .bold, design: .rounded))
                         .foregroundColor(.white)
@@ -69,7 +93,24 @@ struct GameOverView: View {
 
                     Spacer()
 
-                    // back to main menu
+                    // retry Button
+                    Button(action: {
+                        withAnimation {
+                            showCountdown = true
+                        }
+                    }) {
+                        Image(systemName: "gobackward")
+                            .font(.system(size: 28, weight: .bold))
+                            .padding()
+                            .background(Color.white.opacity(0.2))
+                            .foregroundColor(.white)
+                            .clipShape(Circle())
+                            .shadow(radius: 5)
+                            .padding(.bottom, 10)
+                    }
+                    .padding(.horizontal, 40)
+
+                    // back to Menu Button
                     Button(action: {
                         withAnimation {
                             goToMenu = true
@@ -87,7 +128,7 @@ struct GameOverView: View {
                             .padding(.bottom, 10)
                     }
 
-                    // view leaderboard
+                    // view Leaderboard Button
                     Button(action: {
                         showLeaderboard = true
                     }) {
@@ -110,6 +151,8 @@ struct GameOverView: View {
                 .padding(.horizontal, 20)
             }
         }
+        .animation(.easeInOut, value: showCountdown)
+        .animation(.easeInOut, value: showGameView)
         .animation(.easeInOut, value: goToMenu)
     }
 }

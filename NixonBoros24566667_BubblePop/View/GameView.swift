@@ -34,14 +34,6 @@ struct GameView: View {
     var body: some View {
         NavigationStack {
             ZStack {
-                // bg gradient
-                LinearGradient(
-                    gradient: Gradient(colors: [Color.black.opacity(0.85), Color.white.opacity(0.3)]),
-                    startPoint: .top,
-                    endPoint: .bottom
-                )
-                .ignoresSafeArea()
-
                 if isGameOver {
                     GameOverView(playerName: playerName, finalScore: gameController.score)
                         .opacity(fadeIn ? 1 : 0)
@@ -51,6 +43,15 @@ struct GameView: View {
                             }
                         }
                 } else {
+                    // bg gradient
+                    LinearGradient(
+                        gradient: Gradient(colors: [Color.black.opacity(0.85), Color.white.opacity(0.3)]),
+                        startPoint: .top,
+                        endPoint: .bottom
+                    )
+                    .ignoresSafeArea()
+
+                    // game view
                     VStack(spacing: 20) {
                         // header info
                         HStack {
