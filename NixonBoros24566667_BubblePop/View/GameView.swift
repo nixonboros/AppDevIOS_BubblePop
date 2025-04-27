@@ -135,14 +135,14 @@ struct GameView: View {
                                         .bold()
                                         .shadow(color: .black.opacity(0.7), radius: 3, x: 1, y: 1)
                                         .position(overlay.position)
-                                        .opacity(overlay.opacity) // bind opacity here
+                                        .opacity(overlay.opacity)
                                         .onAppear {
-                                            withAnimation(.easeOut(duration: 0.5)) {
+                                            withAnimation(.easeOut(duration: 0.4)) {
                                                 if let index = gameController.pointOverlays.firstIndex(where: { $0.position == overlay.position }) {
                                                     gameController.pointOverlays[index].opacity = 0 // animate to 0 opacity
                                                 }
                                             }
-                                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
                                                 if let index = gameController.pointOverlays.firstIndex(where: { $0.position == overlay.position }) {
                                                     gameController.pointOverlays.remove(at: index)
                                                 }
