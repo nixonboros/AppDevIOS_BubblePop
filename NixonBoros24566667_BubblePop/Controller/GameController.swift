@@ -11,6 +11,8 @@ class GameController: ObservableObject {
     @Published var isGameStarted: Bool = false
     @Published var gameModel: GameModel
     @Published var bubbles: [BubbleModel.Bubble] = []
+    @Published var tappedBubbleId: UUID? = nil
+    @Published var pointsOpacity: Double = 1.0
     
     private var timer: Timer? = nil
     private var previousBubbleColor: BubbleModel.BubbleColour? = nil
@@ -150,6 +152,21 @@ class GameController: ObservableObject {
         }
 
         self.bubbles = newBubbles
+    }
+    
+    // shows point overlay
+    func showPointsOverlay(for bubble: BubbleModel.Bubble) {
+        tappedBubbleId = bubble.id
+        pointsOpacity = 1.0
+
+        withAnimation(.easeOut(duration: 0.8)) {
+            pointsOpacity = 0.0
+        }
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
+            self.tappedBubbleId = nil // reset tapped bubble
+            self.pointsOpacity = 1.0 // reset opacity for next point
+        }
     }
     
     // game settings update funcs

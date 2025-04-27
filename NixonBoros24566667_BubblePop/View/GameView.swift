@@ -116,9 +116,21 @@ struct GameView: View {
                                                 gameController.popBubble(bubble: bubble)
                                                 bubbleScales.removeValue(forKey: bubble.id)
                                             }
+                                            gameController.showPointsOverlay(for: bubble)
                                         }
                                 }
 
+                                // display points gained when a bubble is tapped
+                                if let tappedBubbleId = gameController.tappedBubbleId,
+                                   let tappedBubble = gameController.bubbles.first(where: { $0.id == tappedBubbleId }) {
+                                    Text("+\(tappedBubble.color.pointValue)")
+                                        .font(.title)
+                                        .foregroundColor(.black)
+                                        .bold()
+                                        .opacity(gameController.pointsOpacity)
+                                        .position(tappedBubble.position)
+                                        .animation(.easeOut(duration: 0.8), value: gameController.pointsOpacity)
+                                }
                             }
                             .onAppear {
                                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
